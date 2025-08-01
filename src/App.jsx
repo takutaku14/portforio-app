@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { User, Star, Briefcase, X, ArrowUpRight, Github, Linkedin, Twitter, Code } from 'lucide-react';
 
 // --- データセクション ---
@@ -40,7 +40,6 @@ const portfolioData = {
         { name: "HTML / CSS", level: 3, experience: "2年" },
         { name: "JavaScript", level: 3, experience: "2年" },
         { name: "SQL", level: 2, experience: "半年" },
-        { name: "MATLAB", level: 2, experience: "半年" },
       ]
     },
     {
@@ -48,50 +47,122 @@ const portfolioData = {
       items: [
         { name: "Unity", level: 3, experience: "2年" },
         { name: "React / Next.js", level: 3, experience: "2年" },
-        { name: "Scikit-learn / Pandas", level: 5, experience: "4年" },
       ]
     },
     {
       category: "Cloud / Infra",
       items: [
-        { name: "AWS", level: 3, experience: "1年" },
-        { name: "Docker", level: 3, experience: "2年" },
+        { name: "AWS", level: 2, experience: "1年" },
       ]
     },
     {
       category: "Tools / Others",
       items: [
         { name: "Git / GitHub", level: 4, experience: "3年" },
-        { name: "Figma", level: 3, experience: "1年" },
       ]
     }
   ],
   works: [
     {
       id: 1,
-      title: "社内業務効率化AI画像処理システム",
-      thumbnail: `https://placehold.co/600x400/A5B4FC/FFFFFF?text=AI+System`,
-      description: "手作業で行われていた画像加工業務を自動化し、生産性を50倍に向上させたWebアプリケーション。",
-      tags: ["業務改善", "AI", "Webアプリ", "AWS"],
-      overview: "IT企業のインターンシップにて、複数部署で行われていた月間160時間の画像加工業務を自動化するプロジェクトを主導。単なる自動化ではなく、部署毎のニーズに対応できる汎用的なプラットフォームとして設計・開発。AWS上で安定稼働するWebアプリとして全社に導入しました。",
+      category: "長期インターンシップ",
+      title: "社内業務自動化のための画像処理プラットフォーム",
+      thumbnail: `https://placehold.co/600x400/A5B4FC/FFFFFF?text=Image+Platform`,
+      description: "複数部署の画像加工作業を自動化するWebプラットフォーム。各部署のニーズに応じたツール群を提供し、全社的な生産性向上を実現。",
+      tags: ["業務改善", "Webプラットフォーム", "自動化", "React", "Python", "AWS"],
+      overview: "長期インターンシップにて、複数部署で発生していた非効率な画像関連業務を解決するため、汎用的なプラットフォームを設計・構築しました。単なる個別ツールの開発に留まらず、今後の機能追加も容易な拡張性の高いシステムとして開発し、全社的な業務基盤となることを目指しました。",
       siteUrl: null,
       repoUrl: "#",
       screenshots: [
-        `https://placehold.co/800x500/A5B4FC/FFFFFF?text=Screenshot+1`,
+        `https://placehold.co/800x500/A5B4FC/FFFFFF?text=Platform+Dashboard`,
       ],
       stack: {
-        Frontend: "React, etc.",
-        Backend: "Python, 機械学習 (ロゴ自動認識)",
-        Infra: "AWS",
+        Frontend: "React, TypeScript",
+        Backend: "Python, FastAPI",
+        Infra: "AWS (S3, Lambda, etc.)",
+        Others: "Pillow, Tkinter, 正規表現"
       },
       points: [
-        "50倍の生産性向上：画像加工の処理時間を1件あたり10分から12秒に短縮し、月間160時間の工数を削減しました。",
+        "50倍の生産性向上：プラットフォーム導入により、画像加工作業の時間を1件あたり10分から12秒に短縮し、月間160時間の工数を削減しました。",
         "本質的な課題解決：5部署へのヒアリングを通じて真の課題を発見し、「汎用的な画像処理プラットフォーム」という根本的な解決策を提案・実装しました。",
-        "技術リーダーシップ：6名のインターンチームで技術リーダーを務め、機械学習モデルの設計からWeb I/F、API設計、AWSへのデプロイまでを主導しました。",
+        "拡張性の高いシステム設計：今後の機能追加を容易にするため、各画像処理機能をマイクロサービスのように分離して実装しました。",
       ]
     },
     {
       id: 2,
+      category: "長期インターンシップ",
+      title: "【事例】LINEミニアプリアイコンメーカー",
+      thumbnail: `https://placehold.co/600x400/818CF8/FFFFFF?text=LINE+Icon+Maker`,
+      description: "プラットフォーム機能の一例。LINEミニアプリの規定に沿ったアイコンを自動生成し、開発者の作業時間を大幅に削減。",
+      tags: ["機能開発", "自動化", "LINEミニアプリ"],
+      overview: "プラットフォームの具体的な機能として、LINEミニアプリ開発で頻発するアイコン作成作業を自動化するツールを開発。アップロードされた画像を元に、適切なリサイズ、角丸処理、リネームを自動で施します。",
+      siteUrl: null,
+      repoUrl: "#",
+      // ▼▼▼ ここを修正 ▼▼▼
+      screenshots: [
+        './images/line-iconmaker-sc (1).png',
+        './images/line-iconmaker-sc (2).png',
+        './images/line-iconmaker-sc (3).png',
+        './images/line-iconmaker-sc (4).png',
+      ],
+      // ▲▲▲ ここまで修正 ▲▲▲
+      stack: {
+        Language: "Python",
+        Library: "Pillow",
+      },
+      points: [
+        "アイコン作成時間を95%削減：従来数分かかっていた作業を数秒に短縮しました。",
+        "ヒューマンエラーの撲滅：自動化により、サイズやファイル名の指定ミスがなくなりました。",
+        "開発者体験の向上：単純作業から解放され、より本質的な開発業務に集中できる環境を整えました。",
+      ]
+    },
+    {
+      id: 3,
+      category: "長期インターンシップ",
+      title: "【事例】業種別リネーム＆加工ツール",
+      thumbnail: `https://placehold.co/600x400/6EE7B7/FFFFFF?text=Rename+Tool`,
+      description: "プラットフォーム機能の一例。広告出稿先の業種ルールに基づき、大量の画像ファイルのリネームと加工を自動化。",
+      tags: ["機能開発", "リネーム", "画像加工", "正規表現"],
+      overview: "マーケティング部門の「業種ごとに異なる複雑な命名規則と画像要件への対応が大変」という課題を解決するために開発したプラットフォームの一機能。設定ファイルに基づいて柔軟に処理内容を変更できる設計にしました。",
+      siteUrl: null,
+      repoUrl: "#",
+      screenshots: [],
+      stack: {
+        Tool: "Python",
+        Logic: "正規表現によるファイル名解析",
+        UI: "TkinterによるGUI",
+      },
+      points: [
+        "月間数十時間の単純作業をゼロにしました。",
+        "命名規則のミスによる手戻りを撲滅し、制作効率を向上させました。",
+        "非エンジニアでも利用可能なシンプルなUIを設計しました。",
+      ]
+    },
+    {
+      id: 4,
+      category: "長期インターンシップ",
+      title: "【事例】媒体別リサイズツール",
+      thumbnail: `https://placehold.co/600x400/FBBF24/FFFFFF?text=Resize+Tool`,
+      description: "プラットフォーム機能の一例。複数の広告媒体の規定サイズに合わせて、一括で画像をリサイズ・最適化。",
+      tags: ["機能開発", "リサイズ", "画像最適化", "Webアプリ"],
+      overview: "広告運用チーム向けに開発したプラットフォームの一機能。各媒体の入稿規定（サイズ、容量）をプリセットとして保存・管理でき、ドラッグ＆ドロップの簡単操作で、誰でも迅速に広告用画像を準備できるWebアプリケーションです。",
+      siteUrl: null,
+      repoUrl: "#",
+      screenshots: [],
+      stack: {
+        Frontend: "React",
+        Backend: "Python, FastAPI",
+        Infra: "AWS",
+      },
+      points: [
+        "複数媒体への広告出稿準備時間を1/10に短縮しました。",
+        "画像の品質を維持しつつ、ファイル容量を最適化する処理を実装しました。",
+        "入稿規定の変更にも迅速に対応できるよう、プリセットを簡単に追加・編集できる管理機能を設けました。",
+      ]
+    },
+    {
+      id: 5,
+      category: "研究",
       title: "VR眼精疲労 リアルタイム予測システム",
       thumbnail: `https://placehold.co/600x400/FCA5A5/FFFFFF?text=VR+Research`,
       description: "機械学習を用いてVR利用時の眼精疲労をリアルタイムで監視・予測する研究開発プロジェクト。",
@@ -110,7 +181,8 @@ const portfolioData = {
       ]
     },
     {
-      id: 3,
+      id: 6,
+      category: "その他の活動",
       title: "大学オーケストラ 学生指揮者",
       thumbnail: `https://placehold.co/600x400/93C5FD/FFFFFF?text=Orchestra`,
       description: "100人超の楽団を率い、演奏会や武道館での卒業式を成功に導いたリーダーシップ経験。",
@@ -149,7 +221,7 @@ const Home = ({ data, onWorkClick }) => {
   const focusAreas = [
     {
       title: "AIによる課題解決",
-      description: "IT企業のインターンシップにて、AI画像処理システムを開発し、月間の業務を50倍効率化しました。ビジネス課題の本質を捉え、技術で具体的な価値を創出します。",
+      description: "IT企業のインターンシップにて、複数部署の業務を自動化する画像処理プラットフォームを構築。ビジネス課題の本質を捉え、技術で具体的な価値を創出します。",
       icon: Code,
       workId: 1,
     },
@@ -157,13 +229,13 @@ const Home = ({ data, onWorkClick }) => {
       title: "先進技術の研究開発",
       description: "大学院では、VR利用時の安全性を高めるため、機械学習を用いた生体情報の分析に取り組んでいます。技術の社会実装を通じて、人々の生活を豊かにすることを目指します。",
       icon: Star,
-      workId: 2,
+      workId: 5,
     },
     {
       title: "チームビルディングとリーダーシップ",
       description: "100人規模の大学オーケストラで学生指揮者を務めました。多様なメンバーの力を引き出し、一つの目標を達成するチームワークを大切にしています。",
       icon: User,
-      workId: 3,
+      workId: 6,
     }
   ];
 
@@ -292,35 +364,122 @@ const Skills = ({ data }) => (
 );
 
 // Worksセクション
-const Works = ({ data, onWorkClick }) => (
-  <div className="p-8 md:p-12 animate-fade-in">
-    <h2 className="text-3xl font-bold text-gray-800 mb-8 max-w-6xl mx-auto">Works</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {data.map(work => (
-        <div key={work.id} 
-             className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
-             onClick={() => onWorkClick(work)}>
-          <div className="overflow-hidden h-48">
-            <img src={work.thumbnail} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-          </div>
-          <div className="p-5">
-            <h3 className="text-lg font-bold text-gray-800">{work.title}</h3>
-            <p className="text-sm text-gray-600 mt-2 h-10">{work.description}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {work.tags.map(tag => (
-                <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{tag}</span>
+const Works = ({ data, onWorkClick }) => {
+  // データをカテゴリごとにグループ化
+  const groupedWorks = data.reduce((acc, work) => {
+    const category = work.category || "その他";
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(work);
+    return acc;
+  }, {});
+
+  const fullWidthCategory = "長期インターンシップ";
+  const sideBySideCategories = ["研究", "その他の活動"];
+
+  // 汎用的なカードレンダリングコンポーネント
+  const WorkCard = ({ work }) => (
+    <div key={work.id}
+         className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer group flex flex-col h-[440px]"
+         onClick={() => onWorkClick(work)}>
+      <div className="overflow-hidden h-48 flex-shrink-0">
+        {/* ▼▼▼ ここを修正 ▼▼▼ */}
+        <img src={work.thumbnail} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+        {/* ▲▲▲ ここまで修正 ▲▲▲ */}
+      </div>
+      <div className="p-5 flex flex-col flex-grow">
+        <h3 className="text-lg font-bold text-gray-800">{work.title}</h3>
+        <p className="text-sm text-gray-600 mt-2">{work.description}</p>
+        <div className="mt-auto pt-4 flex flex-wrap gap-2">
+          {work.tags.map(tag => (
+            <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="p-8 md:p-12 animate-fade-in">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">Works</h2>
+        
+        {/* --- 長期インターンシップ セクション --- */}
+        {groupedWorks[fullWidthCategory] && (
+          <section className="mb-12">
+            <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
+              {fullWidthCategory}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {groupedWorks[fullWidthCategory].map(work => (
+                <WorkCard key={work.id} work={work} />
               ))}
             </div>
-          </div>
+          </section>
+        )}
+
+        {/* --- 横並びセクション（インターンシップと同じグリッド定義を使用） --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sideBySideCategories.map(category => (
+            groupedWorks[category] && (
+              <section key={category} className="min-w-0">
+                <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
+                  {category}
+                </h3>
+                {groupedWorks[category].map(work => (
+                  <WorkCard key={work.id} work={work} />
+                ))}
+              </section>
+            )
+          ))}
         </div>
-      ))}
+        
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 // 制作実績詳細モーダル
 const WorkDetailModal = ({ work, onClose }) => {
   if (!work) return null;
+
+  // ▼▼▼ ここから新規追加コンポーネント ▼▼▼
+  // 画像スライドショーコンポーネント
+  const ImageSlideshow = ({ images }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+      if (!images || images.length <= 1) return;
+
+      const timer = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000);
+
+      return () => clearInterval(timer);
+    }, [images]);
+
+    if (!images || images.length === 0) {
+      return null;
+    }
+
+    return (
+      <div className="w-full h-80 bg-white flex items-center justify-center overflow-hidden relative rounded-lg mb-6 shadow-md">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Slideshow image ${index + 1}`}
+            className={`absolute w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${
+              index === currentIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
+      </div>
+    );
+  };
+  // ▲▲▲ ここまで新規追加コンポーネント ▲▲▲
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4 animate-fade-in-fast" onClick={onClose}>
@@ -332,9 +491,11 @@ const WorkDetailModal = ({ work, onClose }) => {
           </button>
         </header>
         <main className="p-6 overflow-y-auto">
-          {work.screenshots && work.screenshots.length > 0 && (
-            <img src={work.screenshots[0]} alt={`${work.title} screenshot`} className="w-full rounded-lg mb-6 shadow-md" />
-          )}
+          {/* ▼▼▼ ここから修正 ▼▼▼ */}
+          {work.screenshots && work.screenshots.length > 0 ? (
+            <ImageSlideshow images={work.screenshots} />
+          ) : null}
+          {/* ▲▲▲ ここまで修正 ▲▲▲ */}
           <div className="flex gap-4 mb-6">
             {work.siteUrl && <a href={work.siteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">サイトを見る <ArrowUpRight size={16}/></a>}
             {work.repoUrl && <a href={work.repoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">GitHubでコードを見る <Github size={16}/></a>}
@@ -345,20 +506,24 @@ const WorkDetailModal = ({ work, onClose }) => {
               <h4 className="font-bold text-gray-700 mb-2">概要</h4>
               <p className="text-gray-600 leading-relaxed">{work.overview}</p>
             </div>
-            <div>
-              <h4 className="font-bold text-gray-700 mb-2">技術スタック</h4>
-              <div className="text-sm text-gray-600 space-y-1">
-                {Object.entries(work.stack).map(([key, value]) => (
-                  <p key={key}><strong className="font-semibold text-gray-700">{key}:</strong> {value}</p>
-                ))}
+            { work.stack &&
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">技術スタック</h4>
+                <div className="text-sm text-gray-600 space-y-1">
+                  {Object.entries(work.stack).map(([key, value]) => (
+                    <p key={key}><strong className="font-semibold text-gray-700">{key}:</strong> {value}</p>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-700 mb-2">工夫した点・課題解決</h4>
-              <ul className="list-disc list-inside text-gray-600 space-y-2">
-                {work.points.map((point, i) => <li key={i}>{point}</li>)}
-              </ul>
-            </div>
+            }
+            { work.points &&
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">工夫した点・課題解決</h4>
+                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                  {work.points.map((point, i) => <li key={i}>{point}</li>)}
+                </ul>
+              </div>
+            }
           </div>
         </main>
       </div>
