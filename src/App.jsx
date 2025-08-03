@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { User, Star, Briefcase, X, ArrowUpRight, Github, Linkedin, Twitter, Code } from 'lucide-react';
 
 // --- データセクション ---
-// このオブジェクト内の情報をあなた自身のものに書き換えてください。
 const portfolioData = {
   name: "藤井琢也",
   title: "AIエンジニア / データサイエンティスト",
@@ -10,7 +9,7 @@ const portfolioData = {
   about: {
     introduction: "AIとデータサイエンスの力で社会課題を解決し、ビジネス価値を創出することに強い関心を持っています。大学院での研究やIT企業でのインターンシップ経験に加え、100人規模のオーケストラで学生指揮者を務めた経験から、多様なメンバーをまとめるリーダーシップも強みです。",
     story: "4歳からピアノ、16歳からホルンを始め、音楽を通じて継続的に物事に取り組む姿勢を養いました。大学では情報計算科学を専攻し、AIとデータサイエンスを学んでいます。研究ではVR利用時の安全性を高める機械学習システムを構築し、長期インターンシップではAIで社内業務を50倍効率化するなど、技術で課題を解決することに情熱を注いでいます。また、大学生活を通じて4年間続けた塾講師のアルバイトでは、複雑な事柄を分かりやすく伝える力を培いました。音楽と技術、そして教育の経験から得た多角的な視点を大切にしています。",
-    imageUrl: `https://placehold.co/128x128/EFEFEF/333333?text=Avatar`, // あなたの顔写真やアバターのURLに差し替えてください
+    imageUrl: `https://placehold.co/128x128/EFEFEF/333333?text=Avatar`,
     timeline: [
       { year: "20XX年〜現在", event: "東京理科大学 創域理工学研究科 情報計算科学専攻" },
       { year: "20XX年〜20XX年", event: "大学オーケストラで学生指揮者を務める" },
@@ -24,9 +23,9 @@ const portfolioData = {
       { title: "チームを導くリーダーシップ", description: "100人超のオーケストラで学生指揮者を務め、多様なメンバーの強みを引き出し、演奏会を成功に導きました。この経験をチーム開発にも活かします。" },
     ],
     socials: {
-      github: "https://github.com/", // ご自身のURLに変更してください
-      linkedin: "https://linkedin.com/", // ご自身のURLに変更してください
-      twitter: "https://twitter.com/", // ご自身のURLに変更してください
+      github: "https://github.com/",
+      linkedin: "https://linkedin.com/",
+      twitter: "https://twitter.com/",
     }
   },
   skills: [
@@ -66,11 +65,11 @@ const portfolioData = {
     {
       id: 1,
       category: "長期インターンシップ",
-      title: "社内業務自動化のための画像処理プラットフォーム",
+      title: "事例1：社内業務自動化のための画像処理プラットフォーム",
       thumbnail: `https://placehold.co/600x400/A5B4FC/FFFFFF?text=Image+Platform`,
-      description: "複数部署の画像加工作業を自動化するWebプラットフォーム。各部署のニーズに応じたツール群を提供し、全社的な生産性向上を実現。",
-      tags: ["業務改善", "Webプラットフォーム", "自動化", "React", "Python", "AWS"],
-      overview: "長期インターンシップにて、複数部署で発生していた非効率な画像関連業務を解決するため、汎用的なプラットフォームを設計・構築しました。単なる個別ツールの開発に留まらず、今後の機能追加も容易な拡張性の高いシステムとして開発し、全社的な業務基盤となることを目指しました。",
+      description: "仕様の異なる複数の画像加工ツールを統合し、全社的な生産性向上を実現したWebプラットフォーム。",
+      tags: ["業務改善", "Webプラットフォーム", "React", "AWS", "UI/UX設計"],
+      overview: "社内では、部署や目的ごとに仕様の異なる様々な画像加工作業が手作業で行われ、非効率と品質のばらつきが課題でした。リサイズ一つをとっても『余白を追加する』ツールと『トリミングする』ツール、ファイル名を『強制的に変更する』ツールと『維持する』ツールなど、要件が根本的に異なり、単一の万能ツールでは解決できませんでした。そこで、これらの多様なニーズにそれぞれ特化した専用ツール群を、一つの共通基盤上で提供する『画像処理プラットフォーム』を構想・設計しました。",
       siteUrl: null,
       repoUrl: "#",
       screenshots: [
@@ -79,91 +78,119 @@ const portfolioData = {
       stack: {
         Frontend: "React, TypeScript",
         Backend: "Python, FastAPI",
-        Infra: "AWS (S3, Lambda, etc.)",
-        Others: "Pillow, Tkinter, 正規表現"
+        Infra: "AWS (Amplify, S3, Lambda, etc.)",
+        "Core Tech": "Canvas API, Web Workers"
       },
       points: [
-        "50倍の生産性向上：プラットフォーム導入により、画像加工作業の時間を1件あたり10分から12秒に短縮し、月間160時間の工数を削減しました。",
-        "本質的な課題解決：5部署へのヒアリングを通じて真の課題を発見し、「汎用的な画像処理プラットフォーム」という根本的な解決策を提案・実装しました。",
-        "拡張性の高いシステム設計：今後の機能追加を容易にするため、各画像処理機能をマイクロサービスのように分離して実装しました。",
+        "拡張性の高い『ツール選択型』アーキテクチャ：iLovePDFのように、ユーザーが目的に応じて最適なツールを選択できるUIを採用。将来的な機能追加も、新たなツールとして容易に統合できる設計にしました。",
+        "多様な業務要件への対応：『厳格なルールを適用する自動化ツール』から『ユーザーの裁量を許容する半自動ツール』まで、各部署のワークフローに最適化された、性質の異なるツール群を開発・統合しました。",
+        "共通の技術基盤とUI/UX：全てのツールをクライアントサイド完結型で統一し、セキュリティを確保。また、ドラッグ＆ドロップによるアップロードやZIP形式での一括ダウンロードなど、基本的な操作感を共通化することで、学習コストを低減しました。",
+        "50倍の生産性向上：本プラットフォームのツール導入により、ある画像加工作業の時間を1件あたり10分から12秒に短縮し、月間160時間の工数を削減しました。",
       ]
     },
     {
       id: 2,
       category: "長期インターンシップ",
-      title: "【事例】LINEミニアプリアイコンメーカー",
+      title: "事例1-1：LINEミニアプリアイコンメーカー",
       thumbnail: `https://placehold.co/600x400/818CF8/FFFFFF?text=LINE+Icon+Maker`,
-      description: "プラットフォーム機能の一例。LINEミニアプリの規定に沿ったアイコンを自動生成し、開発者の作業時間を大幅に削減。",
-      tags: ["機能開発", "自動化", "LINEミニアプリ"],
-      overview: "プラットフォームの具体的な機能として、LINEミニアプリ開発で頻発するアイコン作成作業を自動化するツールを開発。アップロードされた画像を元に、適切なリサイズ、角丸処理、リネームを自動で施します。",
+      description: "LINEミニアプリの厳格なアイコン規定を手軽にクリアできる、高機能なWebアプリケーション。",
+      tags: ["業務効率化", "Vanilla JS", "Canvas", "UI/UX設計", "クライアントサイド"],
+      overview: "LINEミニアプリのアイコンにはピクセルサイズやロゴの占有率など厳格な規定があり、従来は非デザイナーが手作業で作成していたため、時間がかかり品質も不安定でした。この課題を解決するため、誰でも・すばやく・規定に準拠したアイコンを量産できるWebアプリケーションとして本ツールを開発しました。",
       siteUrl: null,
       repoUrl: "#",
-      // ▼▼▼ ここを修正 ▼▼▼
       screenshots: [
         './images/line-iconmaker-sc (1).png',
         './images/line-iconmaker-sc (2).png',
         './images/line-iconmaker-sc (3).png',
         './images/line-iconmaker-sc (4).png',
       ],
-      // ▲▲▲ ここまで修正 ▲▲▲
       stack: {
-        Language: "Python",
-        Library: "Pillow",
+        "Frontend": "HTML5, CSS3, Vanilla JavaScript",
+        "Core Technologies": "Canvas API, File API, Web Storage API",
+        "Libraries": "JSZip",
       },
       points: [
-        "アイコン作成時間を95%削減：従来数分かかっていた作業を数秒に短縮しました。",
-        "ヒューマンエラーの撲滅：自動化により、サイズやファイル名の指定ミスがなくなりました。",
-        "開発者体験の向上：単純作業から解放され、より本質的な開発業務に集中できる環境を整えました。",
+        "賢い自動認識・調整機能：アップロードされたロゴ画像の余白を自動でトリミングし、LINEのガイドラインで推奨される中央エリアに最適なサイズで配置します。背景色も画像の端から自動で抽出するため、ユーザーは殆どのケースで微調整すら不要です。",
+        "直感的でパワフルな編集UI：自動認識が難しい場合でも、手動でのトリミング範囲指定や、ドラッグ＆ドロップ、マウスホイールでの直感的なロゴ位置・サイズの微調整が可能です。リアルタイムプレビューで常に完成形を確認しながら作業できます。",
+        "複数画像の並行編集能：最大10枚の画像を一度にアップロードし、タブのように切り替えながら並行で編集作業を進められます。これにより、単位時間当たりのアイコン生成数を大幅に向上させています。",
+        "サーバー不要のクライアントサイド完結設計：画像処理はすべてユーザーのブラウザ内で完結します。サーバーへの画像アップロードが不要なため、高いセキュリティを確保し、運用コストも最小限に抑えています。",
       ]
     },
     {
       id: 3,
       category: "長期インターンシップ",
-      title: "【事例】業種別リネーム＆加工ツール",
+      title: "事例1-2：業種別リネーム＆加工ツール",
       thumbnail: `https://placehold.co/600x400/6EE7B7/FFFFFF?text=Rename+Tool`,
-      description: "プラットフォーム機能の一例。広告出稿先の業種ルールに基づき、大量の画像ファイルのリネームと加工を自動化。",
-      tags: ["機能開発", "リネーム", "画像加工", "正規表現"],
-      overview: "マーケティング部門の「業種ごとに異なる複雑な命名規則と画像要件への対応が大変」という課題を解決するために開発したプラットフォームの一機能。設定ファイルに基づいて柔軟に処理内容を変更できる設計にしました。",
-      siteUrl: null,
-      repoUrl: "#",
-      screenshots: [],
-      stack: {
-        Tool: "Python",
-        Logic: "正規表現によるファイル名解析",
-        UI: "TkinterによるGUI",
-      },
-      points: [
-        "月間数十時間の単純作業をゼロにしました。",
-        "命名規則のミスによる手戻りを撲滅し、制作効率を向上させました。",
-        "非エンジニアでも利用可能なシンプルなUIを設計しました。",
-      ]
-    },
-    {
-      id: 4,
-      category: "長期インターンシップ",
-      title: "【事例】媒体別リサイズツール",
-      thumbnail: `https://placehold.co/600x400/FBBF24/FFFFFF?text=Resize+Tool`,
-      description: "プラットフォーム機能の一例。複数の広告媒体の規定サイズに合わせて、一括で画像をリサイズ・最適化。",
-      tags: ["機能開発", "リサイズ", "画像最適化", "Webアプリ"],
-      overview: "広告運用チーム向けに開発したプラットフォームの一機能。各媒体の入稿規定（サイズ、容量）をプリセットとして保存・管理でき、ドラッグ＆ドロップの簡単操作で、誰でも迅速に広告用画像を準備できるWebアプリケーションです。",
+      description: "Googleスプレッドシートをマスタとして連携できる、Webベースの画像一括リネーム・リサイズツール。",
+      tags: ["業務改善", "React", "AWS Amplify", "Google Sheets API", "クライアントサイド"],
+      overview: "ペットライフ事業において、毎日発生する大量の画像加工作業が手作業で行われ、大きな業務負担となっていました。この「作業時間の短縮」と「品質の標準化」を目的とし、ブラウザ上で動作する本ツールを開発しました。ユーザーは画像ファイルをアップロードするだけで、指定の命名規則へのリネームと、規定サイズへのリサイズ（余白追加方式）を一括で実行できます。",
       siteUrl: null,
       repoUrl: "#",
       screenshots: [],
       stack: {
         Frontend: "React",
-        Backend: "Python, FastAPI",
-        Infra: "AWS",
+        Backend: "AWS Amplify Functions",
+        "Data Source": "Google Sheets API",
+        Infrastructure: "AWS Amplify Hosting"
       },
       points: [
-        "複数媒体への広告出稿準備時間を1/10に短縮しました。",
-        "画像の品質を維持しつつ、ファイル容量を最適化する処理を実装しました。",
-        "入稿規定の変更にも迅速に対応できるよう、プリセットを簡単に追加・編集できる管理機能を設けました。",
+        "セキュリティと保守性を両立したシステム設計：業種マスタとなるGoogleスプレッドシートからのデータ取得方法として、バックエンド(AWS Amplify Functions)でAPIを呼び出す構成を採用しました。これにより、スプレッドシートを非公開に保ち、認証情報をフロントエンドに露出させることなく安全な連携を実現しています。",
+        "直感的なUXフローの設計：ユーザーが迷わず操作できるよう、「アップロード」「一括設定」「確認・個別編集」「ダウンロード」という4ステップの明確な画面フローを設計しました。",
+        "パフォーマンスへの配慮：大量の画像を読み込む際のUI応答性を維持するため、ファイル読み込み時に軽量なプレビュー用サムネイルを生成する処理を実装しました。",
+        "柔軟な操作性と堅牢性の両立：基本は一括設定で効率化しつつ、画像ごとに設定を上書きできる個別編集機能も提供しました。また、スプレッドシート連携に失敗しても、初期データで処理を継続できるフォールバック機能を実装しています。",
+      ]
+    },
+    {
+      id: 4,
+      category: "長期インターンシップ",
+      title: "事例1-3：媒体別リサイズツール",
+      thumbnail: `https://placehold.co/600x400/FBBF24/FFFFFF?text=Resize+Tool`,
+      description: "複数媒体の規定サイズに合わせて、一括で画像をトリミング・最適化するクライアントサイド完結型のWebアプリケーション。",
+      tags: ["業務効率化", "React", "UI/UX設計", "クライアントサイド処理", "AWS"],
+      overview: "リラクアンドエステ事業部では、EPARKやピークマネージャーといった複数の掲載媒体ごとに、毎日大量の画像リサイズ作業が発生し、大きな時間的コストとなっていました。この作業を『誰でも・すばやく・間違いなく』行える状態にし、業務を抜本的に効率化することを目的に、ブラウザ上ですべての処理が完結する本ツールを開発しました。",
+      siteUrl: null,
+      repoUrl: "#",
+      screenshots: [],
+      stack: {
+        Frontend: "React",
+        Infrastructure: "AWS Amplify Hosting",
+        "Core Technologies": "Canvas API, File API, Web Workers",
+        "Key Libraries": "Cropper.js, JSZip"
+      },
+      points: [
+        "UI/UX設計：ユーザーが直感的に操作できるよう、左に「画像一覧」、右に「操作パネル」を配置した2カラムレイアウトを採用しました。全体設定と個別編集のエリアを明確に分けることで、多数の画像を効率的に扱えるUIを実現しています。",
+        "パフォーマンス最適化：UIの応答性を損なわないよう、画像アップロード時にプレビュー用の軽量なサムネイルを別途生成します。また、重い画像処理はWeb Workerを用いてバックグラウンドで実行することを検討し、メインスレッドのフリーズを回避する設計としました。",
+        "高度なトリミング機能：自動の中央トリミングを基本としつつ、モーダル上で高画質の元画像を直接操作し、最適な表示範囲を手動で調整できる機能を提供しました。これにより、自動化の速さと手動調整による品質を両立させています。",
+        "柔軟な自動化ロジック：ファイル名（例: 'staff', 'logo'）から写真の種別を自動で判定し、媒体ごとに定められたリサイズ設定を適用する機能を実装しました。もちろん手動での上書きも可能とし、柔軟性と効率化を両立しています。",
+      ]
+    },
+    {
+      id: 7,
+      category: "長期インターンシップ",
+      title: "事例1-4：部署別進捗状況自動分析システム",
+      thumbnail: `https://placehold.co/600x400/BFDBFE/FFFFFF?text=Analytics+System`,
+      description: "NotionからエクスポートしたCSVを元に、経営層への報告資料を自動生成する業務効率化ツール。",
+      tags: ["データ分析", "レポート自動化", "Python", "Flask", "Pandas", "PowerPoint"],
+      overview: "インターン生チームの活動成果を社長へ報告する際、Notionからの手動集計に多大な時間がかかっていたため、この定型業務を自動化する目的で開発しました。CSVをアップロードするだけで、煩雑な集集計作業から解放され、管理者が本来のマネジメント業務に集中できる環境を目指しました。",
+      siteUrl: null,
+      repoUrl: "#",
+      screenshots: [],
+      stack: {
+        "Frontend": "HTML5, CSS3, JavaScript (Papa Parse)",
+        "Backend": "Python, Flask",
+        "Data Processing": "Pandas, NumPy",
+        "Report Generation": "python-pptx"
+      },
+      points: [
+        "徹底したプロセスの自動化：CSVをアップロードするだけで、進捗ステータスの自動分類、部署ごとのメトリクス集計、コスト分析までをワンクリックで実行します。手作業による集計ミスをなくし、報告準備の時間を大幅に短縮しました。",
+        "多様なアウトプット形式：Web画面での確認に加え、3種類のCSV（集計結果、全データ、デプロイ日順）と、そのまま報告に使えるPowerPointレポートを自動生成します。用途に応じて最適な形式を選べるため、資料作成の手間を削減できます。",
+        "誰でも使えるUI/UXと起動プロセス：専門知識がなくても使えるよう、ドラッグ＆ドロップでのアップロードや、処理状況がわかるローディング表示など、直感的なUIを設計しました。また、ダブルクリックだけで環境構築からサーバー起動まで完了するバッチファイルを用意し、誰でも簡単に利用開始できるようにしました。",
       ]
     },
     {
       id: 5,
       category: "研究",
-      title: "VR眼精疲労 リアルタイム予測システム",
+      title: "事例2：VR眼精疲労 リアルタイム予測システム",
       thumbnail: `https://placehold.co/600x400/FCA5A5/FFFFFF?text=VR+Research`,
       description: "機械学習を用いてVR利用時の眼精疲労をリアルタイムで監視・予測する研究開発プロジェクト。",
       tags: ["機械学習", "Python", "データ分析"],
@@ -183,7 +210,7 @@ const portfolioData = {
     {
       id: 6,
       category: "その他の活動",
-      title: "大学オーケストラ 学生指揮者",
+      title: "事例3：大学オーケストラ 学生指揮者",
       thumbnail: `https://placehold.co/600x400/93C5FD/FFFFFF?text=Orchestra`,
       description: "100人超の楽団を率い、演奏会や武道館での卒業式を成功に導いたリーダーシップ経験。",
       tags: ["リーダーシップ", "マネジメント", "課題解決"],
@@ -217,13 +244,13 @@ const StarRating = ({ level }) => (
 );
 
 // Homeセクション
-const Home = ({ data, onWorkClick }) => {
+const Home = ({ data, onWorkClick, onInternshipCardClick }) => {
   const focusAreas = [
     {
-      title: "AIによる課題解決",
-      description: "IT企業のインターンシップにて、複数部署の業務を自動化する画像処理プラットフォームを構築。ビジネス課題の本質を捉え、技術で具体的な価値を創出します。",
+      title: "ビジネス価値を創出する開発",
+      description: "長期インターンシップでは、複数部署の業務課題に対し、本質的な改善提案から設計、実装まで一貫して担当。仕様の異なる画像処理ツール群を統合するWebプラットフォームや、経営層への報告を自動化するデータ分析システムなどを構築しました。",
       icon: Code,
-      workId: 1,
+      isInternshipCard: true,
     },
     {
       title: "先進技術の研究開発",
@@ -261,11 +288,11 @@ const Home = ({ data, onWorkClick }) => {
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">私が取り組んでいること</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {focusAreas.map(area => {
-              const work = data.works.find(w => w.id === area.workId);
+              // const work = area.workId ? data.works.find(w => w.id === area.workId) : null; // この行は不要になります
               return (
-                <div key={area.title} 
-                     onClick={() => work && onWorkClick(work)} 
-                     className="bg-white/60 border border-gray-200 rounded-lg p-6 text-center cursor-pointer hover:shadow-xl hover:border-blue-400 transform hover:-translate-y-1 transition-all duration-300">
+                <div key={area.title}
+                     // onClick属性を削除し、classNameからカーソルとホバーエフェクトを削除します
+                     className="bg-white/60 border border-gray-200 rounded-lg p-6 text-center transition-all duration-300">
                   <div className="flex justify-center mb-4">
                     <div className="bg-blue-100 p-3 rounded-full">
                       <area.icon className="w-8 h-8 text-blue-600" />
@@ -365,7 +392,6 @@ const Skills = ({ data }) => (
 
 // Worksセクション
 const Works = ({ data, onWorkClick }) => {
-  // データをカテゴリごとにグループ化
   const groupedWorks = data.reduce((acc, work) => {
     const category = work.category || "その他";
     if (!acc[category]) {
@@ -378,15 +404,12 @@ const Works = ({ data, onWorkClick }) => {
   const fullWidthCategory = "長期インターンシップ";
   const sideBySideCategories = ["研究", "その他の活動"];
 
-  // 汎用的なカードレンダリングコンポーネント
   const WorkCard = ({ work }) => (
     <div key={work.id}
          className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer group flex flex-col h-[440px]"
          onClick={() => onWorkClick(work)}>
       <div className="overflow-hidden h-48 flex-shrink-0">
-        {/* ▼▼▼ ここを修正 ▼▼▼ */}
         <img src={work.thumbnail} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-        {/* ▲▲▲ ここまで修正 ▲▲▲ */}
       </div>
       <div className="p-5 flex flex-col flex-grow">
         <h3 className="text-lg font-bold text-gray-800">{work.title}</h3>
@@ -405,7 +428,6 @@ const Works = ({ data, onWorkClick }) => {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-800 mb-8">Works</h2>
         
-        {/* --- 長期インターンシップ セクション --- */}
         {groupedWorks[fullWidthCategory] && (
           <section className="mb-12">
             <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
@@ -419,7 +441,6 @@ const Works = ({ data, onWorkClick }) => {
           </section>
         )}
 
-        {/* --- 横並びセクション（インターンシップと同じグリッド定義を使用） --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sideBySideCategories.map(category => (
             groupedWorks[category] && (
@@ -445,18 +466,14 @@ const Works = ({ data, onWorkClick }) => {
 const WorkDetailModal = ({ work, onClose }) => {
   if (!work) return null;
 
-  // ▼▼▼ ここから新規追加コンポーネント ▼▼▼
-  // 画像スライドショーコンポーネント
   const ImageSlideshow = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
       if (!images || images.length <= 1) return;
-
       const timer = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
       }, 3000);
-
       return () => clearInterval(timer);
     }, [images]);
 
@@ -479,7 +496,6 @@ const WorkDetailModal = ({ work, onClose }) => {
       </div>
     );
   };
-  // ▲▲▲ ここまで新規追加コンポーネント ▲▲▲
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4 animate-fade-in-fast" onClick={onClose}>
@@ -491,11 +507,9 @@ const WorkDetailModal = ({ work, onClose }) => {
           </button>
         </header>
         <main className="p-6 overflow-y-auto">
-          {/* ▼▼▼ ここから修正 ▼▼▼ */}
           {work.screenshots && work.screenshots.length > 0 ? (
             <ImageSlideshow images={work.screenshots} />
           ) : null}
-          {/* ▲▲▲ ここまで修正 ▲▲▲ */}
           <div className="flex gap-4 mb-6">
             {work.siteUrl && <a href={work.siteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">サイトを見る <ArrowUpRight size={16}/></a>}
             {work.repoUrl && <a href={work.repoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">GitHubでコードを見る <Github size={16}/></a>}
@@ -531,6 +545,50 @@ const WorkDetailModal = ({ work, onClose }) => {
   );
 };
 
+// インターンシップ概要モーダル
+const InternshipDetailModal = ({ isOpen, onClose, onWorkClick, works }) => {
+  if (!isOpen) return null;
+
+  const internshipWorks = works.filter(w => w.category === '長期インターンシップ');
+
+  const handleDetailClick = (work) => {
+    onClose();
+    setTimeout(() => {
+      onWorkClick(work);
+    }, 150);
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4 animate-fade-in-fast" onClick={onClose}>
+      <div className="bg-gray-50 rounded-lg shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onClick={e => e.stopPropagation()}>
+        <header className="p-4 border-b border-gray-200 flex justify-between items-center flex-shrink-0">
+          <h3 className="font-bold text-lg text-gray-800">長期インターンシップでの取り組み</h3>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-800"><X size={24} /></button>
+        </header>
+        <main className="p-6 overflow-y-auto space-y-6">
+          <p className="text-gray-700 leading-relaxed">
+            長期インターンシップでは、複数の部署が抱える課題に対し、技術的なアプローチで本質的な業務改善に取り組んできました。主な成果として以下のプロジェクトを推進しました。各項目の「詳細を見る」から、個別の実績をご確認いただけます。
+          </p>
+          <div className="space-y-4">
+            {internshipWorks.map(work => (
+              <div key={work.id} className="p-4 border border-gray-200 rounded-lg bg-white shadow-sm">
+                <h4 className="font-bold text-md text-gray-800">{work.title}</h4>
+                <p className="text-sm text-gray-600 mt-1">{work.description}</p>
+                <div className="text-right mt-3">
+                  <button onClick={() => handleDetailClick(work)} className="text-sm text-blue-600 hover:underline font-semibold flex items-center gap-1 ml-auto">
+                    <span>詳細を見る</span>
+                    <ArrowUpRight size={14} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
 // Dock (ナビゲーション)
 const Dock = ({ activeView, setActiveView }) => {
   const navItems = [
@@ -545,7 +603,7 @@ const Dock = ({ activeView, setActiveView }) => {
       <ul className="flex items-end gap-3 bg-white/40 backdrop-blur-md p-2 rounded-xl border border-gray-200 shadow-lg">
         {navItems.map(item => (
           <li key={item.id}>
-            <button 
+            <button
               onClick={() => setActiveView(item.id)}
               className={`relative flex flex-col items-center justify-center w-16 h-16 rounded-lg transition-all duration-300 ease-in-out group
                           ${activeView === item.id ? 'bg-blue-100 text-blue-600 scale-110 -translate-y-2' : 'text-gray-600 hover:bg-gray-100 hover:-translate-y-1'}`}
@@ -567,6 +625,7 @@ const Dock = ({ activeView, setActiveView }) => {
 export default function App() {
   const [activeView, setActiveView] = useState('Home');
   const [selectedWork, setSelectedWork] = useState(null);
+  const [isInternshipModalOpen, setIsInternshipModalOpen] = useState(false);
 
   const handleWorkClick = (work) => {
     setSelectedWork(work);
@@ -574,6 +633,14 @@ export default function App() {
 
   const handleCloseModal = () => {
     setSelectedWork(null);
+  };
+
+  const handleInternshipCardClick = () => {
+    setIsInternshipModalOpen(true);
+  };
+
+  const handleCloseInternshipModal = () => {
+    setIsInternshipModalOpen(false);
   };
 
   const CurrentView = useMemo(() => {
@@ -586,24 +653,27 @@ export default function App() {
         return <Works data={portfolioData.works} onWorkClick={handleWorkClick} />;
       case 'Home':
       default:
-        return <Home data={portfolioData} onWorkClick={handleWorkClick} />;
+        return <Home data={portfolioData} onWorkClick={handleWorkClick} onInternshipCardClick={handleInternshipCardClick} />;
     }
   }, [activeView]);
 
   return (
     <div className="font-sans w-full h-screen" style={{ background: 'linear-gradient(to bottom right, #E0E7FF, #F3E8FF)'}}>
-      
-      {/* メインのスクロールエリア */}
+
       <main className="w-full h-full overflow-y-auto pb-28">
         {CurrentView}
       </main>
 
-      {/* 画面下部に固定されるDock */}
       <Dock activeView={activeView} setActiveView={setActiveView} />
 
-      {/* モーダル */}
       <WorkDetailModal work={selectedWork} onClose={handleCloseModal} />
-      
+      <InternshipDetailModal
+        isOpen={isInternshipModalOpen}
+        onClose={handleCloseInternshipModal}
+        onWorkClick={handleWorkClick}
+        works={portfolioData.works}
+      />
+
       <style>{`
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(10px); }
