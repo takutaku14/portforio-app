@@ -4,29 +4,43 @@ import { User, Star, Briefcase, X, ArrowUpRight, Github, Linkedin, Twitter, Code
 // --- データセクション ---
 const portfolioData = {
   name: "藤井琢也",
-  title: "AIエンジニア / データサイエンティスト",
+  title: "大学院生 / エンジニア",
   catchphrase: "技術で、ビジネス価値を創出する",
   about: {
-    introduction: "AIとデータサイエンスの力で社会課題を解決し、ビジネス価値を創出することに強い関心を持っています。大学院での研究やIT企業でのインターンシップ経験に加え、100人規模のオーケストラで学生指揮者を務めた経験から、多様なメンバーをまとめるリーダーシップも強みです。",
-    story: "4歳からピアノ、16歳からホルンを始め、音楽を通じて継続的に物事に取り組む姿勢を養いました。大学では情報計算科学を専攻し、AIとデータサイエンスを学んでいます。研究ではVR利用時の安全性を高める機械学習システムを構築し、長期インターンシップではAIで社内業務を50倍効率化するなど、技術で課題を解決することに情熱を注いでいます。また、大学生活を通じて4年間続けた塾講師のアルバイトでは、複雑な事柄を分かりやすく伝える力を培いました。音楽と技術、そして教育の経験から得た多角的な視点を大切にしています。",
-    imageUrl: `https://placehold.co/128x128/EFEFEF/333333?text=Avatar`,
+    introduction: "技術の力で、目に見える「価値」を生み出すことにこだわっています。AIやデータサイエンスの知識を活かし、企業の業務を効率化するツール開発などを経験してきました。技術的な課題解決だけでなく、100人規模のオーケストラで指揮者として多様なメンバーをまとめ上げた経験を活かし、チーム全体の力を最大化させることも得意です。",
+    story: [
+      {
+        heading: "「継続力」の源泉：音楽との出会い",
+        content: "幼少期から音楽に親しみ、4歳でピアノ、16歳でホルンを始めました。一つの楽器に長年向き合う中で、目標達成のために粘り強く努力を続ける姿勢が自然と身につきました。"
+      },
+      {
+        heading: "「探究心」の実践：学びを価値に変える",
+        content: "大学ではAIやデータサイエンスを学び、「社会の課題を技術でどう解決できるか」を探求しています。研究では、VR利用者の『目の疲れ』をAIが自動検知して安全性を高めるシステムを開発。インターンシップでは、手作業だった画像処理などを自動化するツールを作り、ある業務の生産性を50倍に向上させるなど、学んだ技術で具体的なビジネス価値を創出することに大きなやりがいを感じています。"
+      },
+      {
+        heading: "「伝達力」の育成：相手の「わかった！」を引き出す工夫",
+        content: "4年間続けた塾講師の経験も、私の大きな糧です。中学生に数学や理科を教える中で、複雑な概念も相手の目線で身近な例に置き換えて説明し、「わかった！」を引き出す工夫を重ねました。この経験は、専門外の方へ技術的な内容を分かりやすく伝える上で、強力な土台となっています。"
+      },
+      {
+        heading: "3つの経験を掛け合わせ、未来へ",
+        content: "音楽で培った『継続力』、技術で課題を解決する『探究心』、そして教育で学んだ『伝達力』。これらの異なる分野での経験を掛け合わせ、多角的な視点から新しい価値を生み出していきたいと考えています。"
+      }
+    ],
+    imageUrl: `./images/avatar.jpg`,
     timeline: [
-      { year: "20XX年〜現在", event: "東京理科大学 創域理工学研究科 情報計算科学専攻" },
-      { year: "20XX年〜20XX年", event: "大学オーケストラで学生指揮者を務める" },
-      { year: "20XX年〜20XX年", event: "IT企業にて長期インターンシップ (AIエンジニア)" },
-      { year: "20XX年〜20XX年", event: "学習塾にて講師のアルバイト（4年間）" },
-      { year: "20XX年〜20XX年", event: "東京理科大学 創域理工学部 (例)" },
+      { year: "2025年", event: "東京理科大学 創域理工学研究科 情報計算科学専攻 入学" },
+      { year: "2025年", event: "IT企業にて長期インターンシップ (エンジニア)" },
+      { year: "2023年", event: "大学オーケストラで学生指揮者を務める" },
+      { year: "2021年", event: "学習塾にて講師のアルバイト（4年間）" },
+      { year: "2021年", event: "東京理科大学 理工学部 情報科学科 入学" },
     ],
     values: [
       { title: "課題の本質を見抜く分析力", description: "表面的な問題ではなく根本的な課題を発見し、持続的な価値を創出します。インターンシップでは、単なる作業自動化に留まらず、部署横断的な業務改善基盤を構築しました。" },
       { title: "継続力と探究心", description: "4歳から始めた音楽経験や4年間の塾講師の経験で培った継続力には自信があります。研究や開発においても、常に高みを目指し、粘り強く改善を繰り返すことができます。" },
       { title: "チームを導くリーダーシップ", description: "100人超のオーケストラで学生指揮者を務め、多様なメンバーの強みを引き出し、演奏会を成功に導きました。この経験をチーム開発にも活かします。" },
     ],
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-      twitter: "https://twitter.com/",
-    }
+    // SNSリンクは削除
+    socials: {}
   },
   skills: [
     {
@@ -38,7 +52,6 @@ const portfolioData = {
         { name: "C#", level: 3, experience: "2年" },
         { name: "HTML / CSS", level: 3, experience: "2年" },
         { name: "JavaScript", level: 3, experience: "2年" },
-        { name: "SQL", level: 2, experience: "半年" },
       ]
     },
     {
@@ -51,7 +64,7 @@ const portfolioData = {
     {
       category: "Cloud / Infra",
       items: [
-        { name: "AWS", level: 2, experience: "1年" },
+        { name: "AWS / GCP", level: 2, experience: "半年" },
       ]
     },
     {
@@ -71,9 +84,9 @@ const portfolioData = {
       tags: ["業務改善", "Webプラットフォーム", "React", "AWS", "UI/UX設計"],
       overview: "社内では、部署や目的ごとに仕様の異なる様々な画像加工作業が手作業で行われ、非効率と品質のばらつきが課題でした。リサイズ一つをとっても『余白を追加する』ツールと『トリミングする』ツール、ファイル名を『強制的に変更する』ツールと『維持する』ツールなど、要件が根本的に異なり、単一の万能ツールでは解決できませんでした。そこで、これらの多様なニーズにそれぞれ特化した専用ツール群を、一つの共通基盤上で提供する『画像処理プラットフォーム』を構想・設計しました。",
       siteUrl: null,
-      repoUrl: "#",
+      repoUrl: "#", // このキーの存在でコード非公開のメッセージを表示
       screenshots: [
-        `https://placehold.co/800x500/A5B4FC/FFFFFF?text=Platform+Dashboard`,
+        './images/platform.png',
       ],
       stack: {
         Frontend: "React, TypeScript",
@@ -97,7 +110,7 @@ const portfolioData = {
       tags: ["業務効率化", "Vanilla JS", "Canvas", "UI/UX設計", "クライアントサイド"],
       overview: "LINEミニアプリのアイコンにはピクセルサイズやロゴの占有率など厳格な規定があり、従来は非デザイナーが手作業で作成していたため、時間がかかり品質も不安定でした。この課題を解決するため、誰でも・すばやく・規定に準拠したアイコンを量産できるWebアプリケーションとして本ツールを開発しました。",
       siteUrl: null,
-      repoUrl: "#",
+      repoUrl: "#", // このキーの存在でコード非公開のメッセージを表示
       screenshots: [
         './images/line-iconmaker-sc (1).png',
         './images/line-iconmaker-sc (2).png',
@@ -123,10 +136,13 @@ const portfolioData = {
       thumbnail: `https://placehold.co/600x400/6EE7B7/FFFFFF?text=Rename+Tool`,
       description: "Googleスプレッドシートをマスタとして連携できる、Webベースの画像一括リネーム・リサイズツール。",
       tags: ["業務改善", "React", "AWS Amplify", "Google Sheets API", "クライアントサイド"],
-      overview: "ペットライフ事業において、毎日発生する大量の画像加工作業が手作業で行われ、大きな業務負担となっていました。この「作業時間の短縮」と「品質の標準化」を目的とし、ブラウザ上で動作する本ツールを開発しました。ユーザーは画像ファイルをアップロードするだけで、指定の命名規則へのリネームと、規定サイズへのリサイズ（余白追加方式）を一括で実行できます。",
+      overview: "特定の部署Aにおいて、毎日発生する大量の画像加工作業が手作業で行われ、大きな業務負担となっていました。この「作業時間の短縮」と「品質の標準化」を目的とし、ブラウザ上で動作する本ツールを開発しました。ユーザーは画像ファイルをアップロードするだけで、指定の命名規則へのリネームと、規定サイズへのリサイズ（余白追加方式）を一括で実行できます。",
       siteUrl: null,
-      repoUrl: "#",
-      screenshots: [],
+      repoUrl: "#", // このキーの存在でコード非公開のメッセージを表示
+      screenshots: [
+        './images/rename-resizer (1).png',
+        './images/rename-resizer (2).png',
+      ],
       stack: {
         Frontend: "React",
         Backend: "AWS Amplify Functions",
@@ -135,7 +151,7 @@ const portfolioData = {
       },
       points: [
         "セキュリティと保守性を両立したシステム設計：業種マスタとなるGoogleスプレッドシートからのデータ取得方法として、バックエンド(AWS Amplify Functions)でAPIを呼び出す構成を採用しました。これにより、スプレッドシートを非公開に保ち、認証情報をフロントエンドに露出させることなく安全な連携を実現しています。",
-        "直感的なUXフローの設計：ユーザーが迷わず操作できるよう、「アップロード」「一括設定」「確認・個別編集」「ダウンロード」という4ステップの明確な画面フローを設計しました。",
+        "心理的不安を軽減するUXフロー：ユーザーが迷わず操作できるよう、「1. アップロード」 「2. ファイル名設定」 「3. 確認」 「4. ダウンロード」という明確なステップを常に画面に表示。今どの段階にいるのかを常に把握できるようにすることで、『次に何をすればいいか分からない』という心理的な不安を取り除くよう設計しました。",
         "パフォーマンスへの配慮：大量の画像を読み込む際のUI応答性を維持するため、ファイル読み込み時に軽量なプレビュー用サムネイルを生成する処理を実装しました。",
         "柔軟な操作性と堅牢性の両立：基本は一括設定で効率化しつつ、画像ごとに設定を上書きできる個別編集機能も提供しました。また、スプレッドシート連携に失敗しても、初期データで処理を継続できるフォールバック機能を実装しています。",
       ]
@@ -147,9 +163,9 @@ const portfolioData = {
       thumbnail: `https://placehold.co/600x400/FBBF24/FFFFFF?text=Resize+Tool`,
       description: "複数媒体の規定サイズに合わせて、一括で画像をトリミング・最適化するクライアントサイド完結型のWebアプリケーション。",
       tags: ["業務効率化", "React", "UI/UX設計", "クライアントサイド処理", "AWS"],
-      overview: "リラクアンドエステ事業部では、EPARKやピークマネージャーといった複数の掲載媒体ごとに、毎日大量の画像リサイズ作業が発生し、大きな時間的コストとなっていました。この作業を『誰でも・すばやく・間違いなく』行える状態にし、業務を抜本的に効率化することを目的に、ブラウザ上ですべての処理が完結する本ツールを開発しました。",
+      overview: "特定の部署Bにおいて、規格の異なる複数の掲載媒体ごとに毎日大量の画像リサイズ作業が発生し、大きな時間的コストとなっていました。この作業を『誰でも・すばやく・間違いなく』行える状態にし、業務を抜本的に効率化することを目的に、ブラウザ上ですべての処理が完結する本ツールを開発しました。",
       siteUrl: null,
-      repoUrl: "#",
+      repoUrl: "#", // このキーの存在でコード非公開のメッセージを表示
       screenshots: [],
       stack: {
         Frontend: "React",
@@ -167,13 +183,13 @@ const portfolioData = {
     {
       id: 7,
       category: "長期インターンシップ",
-      title: "事例1-4：部署別進捗状況自動分析システム",
+      title: "事例2：部署別進捗状況自動分析システム",
       thumbnail: `https://placehold.co/600x400/BFDBFE/FFFFFF?text=Analytics+System`,
       description: "NotionからエクスポートしたCSVを元に、経営層への報告資料を自動生成する業務効率化ツール。",
       tags: ["データ分析", "レポート自動化", "Python", "Flask", "Pandas", "PowerPoint"],
       overview: "インターン生チームの活動成果を社長へ報告する際、Notionからの手動集計に多大な時間がかかっていたため、この定型業務を自動化する目的で開発しました。CSVをアップロードするだけで、煩雑な集集計作業から解放され、管理者が本来のマネジメント業務に集中できる環境を目指しました。",
       siteUrl: null,
-      repoUrl: "#",
+      repoUrl: "#", // このキーの存在でコード非公開のメッセージを表示
       screenshots: [],
       stack: {
         "Frontend": "HTML5, CSS3, JavaScript (Papa Parse)",
@@ -190,27 +206,27 @@ const portfolioData = {
     {
       id: 5,
       category: "研究",
-      title: "事例2：VR眼精疲労 リアルタイム予測システム",
+      title: "事例3：VRを安全に利用するためのリアルタイム疲労予測システム",
       thumbnail: `https://placehold.co/600x400/FCA5A5/FFFFFF?text=VR+Research`,
-      description: "機械学習を用いてVR利用時の眼精疲労をリアルタイムで監視・予測する研究開発プロジェクト。",
-      tags: ["機械学習", "Python", "データ分析"],
-      overview: "VR市場の普及課題である長時間利用による眼精疲労に着目。アイトラッキングデータを基に、機械学習モデルを構築し、ユーザーの疲労度を客観的に評価するシステムです。VRコンテンツの安全性向上や、医療・教育分野での応用を目指します。",
+      description: "AI技術を活用し、VR利用中の「目の疲れ」をリアルタイムに検知・予測することで、VRの安全性を高める研究開発です。",
+      tags: ["AI", "データ分析", "Python", "VR/AR"],
+      overview: "長時間VRを使うと目が疲れてしまう、という課題の解決を目指しました。VRゴーグル内のセンサーで『視線の動き』を追い、そのデータからAIが『疲れ具合』を自動で判断します。これにより、これまでは自己申告でしか分からなかった疲労度を、客観的なデータで測れるようになります。VRゲームなどをより安全にしたり、医療や教育の分野で活用したりすることを目指しています。",
       siteUrl: null,
-      repoUrl: "#",
+      repoUrl: null, // repoUrlがないのでメッセージは表示されない
       screenshots: [],
       stack: {
-        Analysis: "アイトラッキングデータ分析",
-        Backend: "Python, Scikit-learn (Random Forest), Pandas",
+        分析対象: "VR利用時の視線データ",
+        使用技術: "Python, Scikit-learn (AIライブラリ), Pandas",
       },
       points: [
-        "客観的評価の実現：従来は主観的なアンケートに頼っていた疲労度評価を、アイトラッキングデータを用いて定量的に測定する手法を確立しました。",
+        "勘や感覚に頼らない評価を実現：これまで『疲れた気がする』といった自己申告に頼っていましたが、本研究では『視線の動き』という客観的なデータから、疲れ具合を数値で評価する技術を確立しました。",
         "幅広い応用可能性：VRゲームの品質管理、医療リハビリ、教育分野など、様々な産業での安全性向上に貢献できる技術です。",
       ]
     },
     {
       id: 6,
       category: "その他の活動",
-      title: "事例3：大学オーケストラ 学生指揮者",
+      title: "事例4：大学オーケストラ 学生指揮者",
       thumbnail: `https://placehold.co/600x400/93C5FD/FFFFFF?text=Orchestra`,
       description: "100人超の楽団を率い、演奏会や武道館での卒業式を成功に導いたリーダーシップ経験。",
       tags: ["リーダーシップ", "マネジメント", "課題解決"],
@@ -280,19 +296,18 @@ const Home = ({ data, onWorkClick, onInternshipCardClick }) => {
         <section className="mb-16">
           <p className="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
             {data.about.introduction}
-            <br />
-            4歳から始めた音楽や4年間の塾講師経験で培った継続力・伝達力と、AIやVRといった先端技術への探求心を掛け合わせ、新しい価値を創造することを目指しています。
           </p>
         </section>
         <section>
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">私が取り組んでいること</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {focusAreas.map(area => {
-              // const work = area.workId ? data.works.find(w => w.id === area.workId) : null; // この行は不要になります
+              const work = area.workId ? data.works.find(w => w.id === area.workId) : null;
+              const isClickable = area.workId || area.isInternshipCard;
               return (
                 <div key={area.title}
-                     // onClick属性を削除し、classNameからカーソルとホバーエフェクトを削除します
-                     className="bg-white/60 border border-gray-200 rounded-lg p-6 text-center transition-all duration-300">
+                     onClick={() => isClickable && (area.isInternshipCard ? onInternshipCardClick() : onWorkClick(work))}
+                     className={`bg-white/60 border border-gray-200 rounded-lg p-6 text-center transition-all duration-300 ${isClickable ? 'cursor-pointer hover:shadow-lg hover:-translate-y-1' : ''}`}>
                   <div className="flex justify-center mb-4">
                     <div className="bg-blue-100 p-3 rounded-full">
                       <area.icon className="w-8 h-8 text-blue-600" />
@@ -329,14 +344,17 @@ const About = ({ data }) => (
         <img src={data.imageUrl} alt={portfolioData.name} className="w-32 h-32 rounded-full mx-auto shadow-lg" />
         <h3 className="text-2xl font-bold mt-4 text-gray-800">{portfolioData.name}</h3>
         <p className="text-gray-500">{portfolioData.title}</p>
-        <div className="flex justify-center gap-4 mt-4">
-          <a href={data.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-800"><Github size={24}/></a>
-          <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-800"><Linkedin size={24}/></a>
-          <a href={data.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-800"><Twitter size={24}/></a>
-        </div>
+        {/* --- SNSリンク削除 --- */}
       </div>
       <div className="flex-grow md:w-3/4">
-        <p className="text-lg text-gray-600 leading-relaxed">{data.story}</p>
+        <div className="space-y-8">
+          {data.story.map((section, index) => (
+            <div key={index}>
+              <h4 className="text-xl font-bold text-gray-800 mb-2">{section.heading}</h4>
+              <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">{section.content}</p>
+            </div>
+          ))}
+        </div>
         <div className="mt-10">
           <h4 className="text-xl font-bold text-gray-700 mb-4">経歴</h4>
           <div className="border-l-2 border-blue-200 pl-6 space-y-6">
@@ -426,7 +444,16 @@ const Works = ({ data, onWorkClick }) => {
   return (
     <div className="p-8 md:p-12 animate-fade-in">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">Works</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Works</h2>
+
+        {/* --- 注釈をここに追加 --- */}
+        <div className="bg-gray-100 border-l-4 border-gray-400 text-gray-800 p-4 mb-8 rounded-r-lg" role="alert">
+          <p className="font-bold text-sm">注記</p>
+          <ul className="list-disc list-inside text-sm mt-1 space-y-1">
+            <li>インターンシップ先の都合上、リポジトリやコードを公開できない制作物が含まれます。</li>
+            <li>守秘義務の観点から、一部スクリーンショットを掲載していない、または汎用的な画像に差し替えている制作物があります。</li>
+          </ul>
+        </div>
         
         {groupedWorks[fullWidthCategory] && (
           <section className="mb-12">
@@ -460,7 +487,6 @@ const Works = ({ data, onWorkClick }) => {
     </div>
   );
 };
-
 
 // 制作実績詳細モーダル
 const WorkDetailModal = ({ work, onClose }) => {
@@ -510,10 +536,12 @@ const WorkDetailModal = ({ work, onClose }) => {
           {work.screenshots && work.screenshots.length > 0 ? (
             <ImageSlideshow images={work.screenshots} />
           ) : null}
-          <div className="flex gap-4 mb-6">
+          
+          {/* --- GitHubボタンとコード非公開理由の表示を修正 --- */}
+          <div className="flex gap-4 mb-2">
             {work.siteUrl && <a href={work.siteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">サイトを見る <ArrowUpRight size={16}/></a>}
-            {work.repoUrl && <a href={work.repoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">GitHubでコードを見る <Github size={16}/></a>}
           </div>
+
           
           <div className="space-y-6">
             <div>
@@ -655,7 +683,7 @@ export default function App() {
       default:
         return <Home data={portfolioData} onWorkClick={handleWorkClick} onInternshipCardClick={handleInternshipCardClick} />;
     }
-  }, [activeView]);
+  }, [activeView, handleWorkClick, handleInternshipCardClick]);
 
   return (
     <div className="font-sans w-full h-screen" style={{ background: 'linear-gradient(to bottom right, #E0E7FF, #F3E8FF)'}}>
@@ -674,7 +702,15 @@ export default function App() {
         works={portfolioData.works}
       />
 
-      <style>{`
+       <style>{`
+        /* Google FontsからNoto Sans JPを読み込み */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        /* font-sansクラスにNoto Sans JPを適用 */
+        .font-sans {
+          font-family: 'Noto Sans JP', sans-serif;
+        }
+
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
