@@ -1,12 +1,27 @@
-# React + Vite
+# Portfolio | 藤井琢也
+これは、藤井琢也のポートフォリオサイトのリポジトリです。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+➡️ ポートフォリオサイトを見る
 
-Currently, two official plugins are available:
+## 概要
+このサイトは、私のスキル、経歴、そしてこれまでに取り組んできたプロジェクトを紹介するために制作したシングルページアプリケーション（SPA）です。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+採用担当者の方に私の人柄や技術力を直感的に理解していただけるよう、UI/UXデザインにもこだわりました。
 
-## Expanding the ESLint configuration
+## 主な機能
+シングルページアプリケーション (SPA): Reactを使用し、ページ遷移なしでスムーズな画面切り替えを実現。
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+レスポンシブデザイン: PC、タブレット、スマートフォンなど、あらゆるデバイスで最適に表示されます。
+
+インタラクティブなUI: モーダルウィンドウによるプロジェクト詳細の表示や、スムーズなアニメーションを実装。
+
+コンポーネントベース設計: 再利用可能でメンテナンスしやすいコンポーネント構造を採用しています。
+
+## 使用技術
+Frontend: React.js
+
+Styling: Tailwind CSS
+
+Icons: lucide-react
+
+Deployment: GitHub Pages
