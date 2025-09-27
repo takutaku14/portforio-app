@@ -35,7 +35,7 @@ const portfolioData = {
       { year: "2021年", event: "東京理科大学 理工学部 情報科学科 入学" },
     ],
     values: [
-      { title: "課題の本質を見抜く分析力", description: "表面的な問題ではなく根本的な課題を発見し、持続的な価値を創出します。インターンシップでは、単なる作業自動化に留まらず、部署横断的な業務改善基盤を構築しました。" },
+      { title: "課題の本質を見抜く分析力", description: "表面的な問題ではなく根本的な課題を発見し、持続的な価値を創出します。インターンシップで開発したツールでは、大学で学んだ統計学を活かして処理時間に相関性の高い要素をデータから特定するなど、勘に頼らない根拠に基づいた改善を得意としています。" },
       { title: "継続力と探究心", description: "4歳から始めた音楽経験や4年間の塾講師の経験で培った継続力には自信があります。研究や開発においても、常に高みを目指し、粘り強く改善を繰り返すことができます。" },
       { title: "チームを導くリーダーシップ", description: "100人超のオーケストラで学生指揮者を務め、多様なメンバーの強みを引き出し、演奏会を成功に導きました。この経験をチーム開発にも活かします。" },
     ],
@@ -98,6 +98,7 @@ const portfolioData = {
         "拡張性の高い『ツール選択型』アーキテクチャ：iLovePDFのように、ユーザーが目的に応じて最適なツールを選択できるUIを採用。将来的な機能追加も、新たなツールとして容易に統合できる設計にしました。",
         "多様な業務要件への対応：『厳格なルールを適用する自動化ツール』から『ユーザーの裁量を許容する半自動ツール』まで、各部署のワークフローに最適化された、性質の異なるツール群を開発・統合しました。",
         "共通の技術基盤とUI/UX：全てのツールをクライアントサイド完結型で統一し、セキュリティを確保。また、ドラッグ＆ドロップによるアップロードやZIP形式での一括ダウンロードなど、基本的な操作感を共通化することで、学習コストを低減しました。",
+        "データ駆動での改善サイクル確立：ユーザー行動を統計的に分析する仕組みを導入し、利用頻度の高い機能やUI上のボトルネックを特定。データに基づいた改善サイクルを確立し、継続的なUX向上を実現しました。",
         "50倍の生産性向上：本プラットフォームのツール導入により、ある画像加工作業の時間を1件あたり10分から12秒に短縮し、月間160時間の工数を削減しました。",
       ]
     },
@@ -250,11 +251,53 @@ const portfolioData = {
 
 // --- コンポーネントセクション ---
 
+const AnimateOnScroll = ({ children, delay = 0, threshold = 0.1, className = '' }) => {
+  const ref = React.useRef(null);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold }
+    );
+
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [ref, threshold]);
+
+  return (
+    <div
+      ref={ref}
+      className={`scroll-fade-in ${isVisible ? 'is-visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
 // 星評価コンポーネント
 const StarRating = ({ level }) => (
   <div className="flex items-center">
     {[...Array(5)].map((_, i) => (
-      <Star key={i} className={`w-4 h-4 ${i < level ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
+      <Star
+        key={i}
+        className={`w-4 h-4 animate-star-appear ${i < level ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+        style={{ animationDelay: `${i * 80}ms` }}
+      />
     ))}
   </div>
 );
@@ -285,51 +328,65 @@ const Home = ({ data, onWorkClick, onInternshipCardClick }) => {
   const keySkills = ["Java", "Python", "AWS", "Unity", "C#", "React", "Linux"];
 
   return (
-    <div className="p-8 md:p-12 animate-fade-in">
+    // "animate-fade-in" を削除
+    <div className="p-8 md:p-12">
       <main className="max-w-4xl mx-auto">
-        <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
-            {data.catchphrase}
-          </h1>
-          <p className="mt-4 text-2xl text-gray-600">{data.name}</p>
-        </section>
-        <section className="mb-16">
-          <p className="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
-            {data.about.introduction}
-          </p>
-        </section>
+        <AnimateOnScroll className="text-center mb-16">
+          <section>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
+              {data.catchphrase}
+            </h1>
+            <p className="mt-4 text-2xl text-gray-600">{data.name}</p>
+          </section>
+        </AnimateOnScroll>
+
+        <AnimateOnScroll className="mb-16" delay={100}>
+          <section>
+            <p className="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
+              {data.about.introduction}
+            </p>
+          </section>
+        </AnimateOnScroll>
+
         <section>
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">私が取り組んでいること</h2>
+          <AnimateOnScroll>
+            <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">私が取り組んでいること</h2>
+          </AnimateOnScroll>
           <div className="grid md:grid-cols-3 gap-8">
-            {focusAreas.map(area => {
+            {focusAreas.map((area, index) => {
               const work = area.workId ? data.works.find(w => w.id === area.workId) : null;
               const isClickable = area.workId || area.isInternshipCard;
               return (
-                <div key={area.title}
-                     onClick={() => isClickable && (area.isInternshipCard ? onInternshipCardClick() : onWorkClick(work))}
-                     className={`bg-white/60 border border-gray-200 rounded-lg p-6 text-center transition-all duration-300 ${isClickable ? 'cursor-pointer hover:shadow-lg hover:-translate-y-1' : ''}`}>
-                  <div className="flex justify-center mb-4">
-                    <div className="bg-blue-100 p-3 rounded-full">
-                      <area.icon className="w-8 h-8 text-blue-600" />
+                <AnimateOnScroll key={area.title} delay={150 * index}>
+                  <div
+                       onClick={() => isClickable && (area.isInternshipCard ? onInternshipCardClick() : onWorkClick(work))}
+                       className={`bg-white/60 border border-gray-200 rounded-lg p-6 text-center transition-all duration-300 h-full ${isClickable ? 'cursor-pointer hover:shadow-lg hover:-translate-y-1' : ''}`}>
+                    <div className="flex justify-center mb-4">
+                      <div className="bg-blue-100 p-3 rounded-full">
+                        <area.icon className="w-8 h-8 text-blue-600" />
+                      </div>
                     </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">{area.title}</h3>
+                    <p className="text-gray-600 text-sm">{area.description}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{area.title}</h3>
-                  <p className="text-gray-600 text-sm">{area.description}</p>
-                </div>
+                </AnimateOnScroll>
               );
             })}
           </div>
         </section>
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">主な使用技術</h2>
-          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3">
-            {keySkills.map(skill => (
-              <span key={skill} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-medium">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
+
+        <AnimateOnScroll className="mt-16" delay={200}>
+          <section>
+            <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">主な使用技術</h2>
+            <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3">
+              {keySkills.map(skill => (
+                <span key={skill} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-medium">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
+        </AnimateOnScroll>
       </main>
     </div>
   );
@@ -337,46 +394,50 @@ const Home = ({ data, onWorkClick, onInternshipCardClick }) => {
 
 // Aboutセクション
 const About = ({ data }) => (
-  <div className="p-8 md:p-12 animate-fade-in">
-    <h2 className="text-3xl font-bold text-gray-800 mb-8 max-w-5xl mx-auto">About Me</h2>
-    <div className="flex flex-col md:flex-row gap-12 items-start max-w-5xl mx-auto">
-      <div className="flex-shrink-0 text-center md:w-1/4">
-        <img src={data.imageUrl} alt={portfolioData.name} className="w-32 h-32 rounded-full mx-auto shadow-lg" />
-        <h3 className="text-2xl font-bold mt-4 text-gray-800">{portfolioData.name}</h3>
-        <p className="text-gray-500">{portfolioData.title}</p>
-        {/* --- SNSリンク削除 --- */}
-      </div>
-      <div className="flex-grow md:w-3/4">
-        <div className="space-y-8">
-          {data.story.map((section, index) => (
-            <div key={index}>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">{section.heading}</h4>
-              <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">{section.content}</p>
+  // "animate-fade-in" を削除
+  <div className="p-8 md:p-12">
+    <div className="max-w-5xl mx-auto">
+      <AnimateOnScroll>
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">About Me</h2>
+      </AnimateOnScroll>
+      <div className="flex flex-col md:flex-row gap-12 items-start">
+        <AnimateOnScroll className="flex-shrink-0 text-center md:w-1/4" delay={100}>
+          <img src={data.imageUrl} alt={portfolioData.name} className="w-32 h-32 rounded-full mx-auto shadow-lg" />
+          <h3 className="text-2xl font-bold mt-4 text-gray-800">{portfolioData.name}</h3>
+          <p className="text-gray-500">{portfolioData.title}</p>
+        </AnimateOnScroll>
+        <div className="flex-grow md:w-3/4">
+          <AnimateOnScroll className="space-y-8" delay={200}>
+            {data.story.map((section, index) => (
+              <div key={index}>
+                <h4 className="text-xl font-bold text-gray-800 mb-2">{section.heading}</h4>
+                <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">{section.content}</p>
+              </div>
+            ))}
+          </AnimateOnScroll>
+          <AnimateOnScroll className="mt-10" delay={300}>
+            <h4 className="text-xl font-bold text-gray-700 mb-4">経歴</h4>
+            <div className="border-l-2 border-blue-200 pl-6 space-y-6">
+              {data.timeline.map(item => (
+                <div key={item.event} className="relative">
+                  <div className="absolute -left-[34px] top-1.5 w-4 h-4 bg-blue-500 rounded-full border-4 border-white"></div>
+                  <p className="font-semibold text-gray-700">{item.event}</p>
+                  <p className="text-sm text-gray-500">{item.year}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="mt-10">
-          <h4 className="text-xl font-bold text-gray-700 mb-4">経歴</h4>
-          <div className="border-l-2 border-blue-200 pl-6 space-y-6">
-            {data.timeline.map(item => (
-              <div key={item.event} className="relative">
-                <div className="absolute -left-[34px] top-1.5 w-4 h-4 bg-blue-500 rounded-full border-4 border-white"></div>
-                <p className="font-semibold text-gray-700">{item.event}</p>
-                <p className="text-sm text-gray-500">{item.year}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mt-10">
-          <h4 className="text-xl font-bold text-gray-700 mb-4">価値観・強み</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {data.values.map(value => (
-              <div key={value.title} className="bg-white/50 border border-gray-200 rounded-lg p-4">
-                <h5 className="font-bold text-gray-800">{value.title}</h5>
-                <p className="text-sm text-gray-600 mt-2">{value.description}</p>
-              </div>
-            ))}
-          </div>
+          </AnimateOnScroll>
+          <AnimateOnScroll className="mt-10" delay={400}>
+            <h4 className="text-xl font-bold text-gray-700 mb-4">価値観・強み</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {data.values.map(value => (
+                <div key={value.title} className="bg-white/50 border border-gray-200 rounded-lg p-4">
+                  <h5 className="font-bold text-gray-800">{value.title}</h5>
+                  <p className="text-sm text-gray-600 mt-2">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </div>
@@ -385,31 +446,39 @@ const About = ({ data }) => (
 
 // Skillsセクション
 const Skills = ({ data }) => (
-  <div className="p-8 md:p-12 animate-fade-in">
-    <h2 className="text-3xl font-bold text-gray-800 mb-8 max-w-5xl mx-auto">Skills</h2>
-    <div className="space-y-10 max-w-5xl mx-auto">
-      {data.map(category => (
-        <div key={category.category}>
-          <h3 className="text-xl font-bold text-gray-700 mb-4 border-b-2 border-gray-200 pb-2">{category.category}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-            {category.items.map(skill => (
-              <div key={skill.name} className="flex items-center justify-between">
-                <div>
-                  <p className="font-semibold text-gray-800">{skill.name}</p>
-                  <p className="text-sm text-gray-500">{skill.experience}</p>
-                </div>
-                <StarRating level={skill.level} />
+  // "animate-fade-in" を削除
+  <div className="p-8 md:p-12">
+    <div className="max-w-5xl mx-auto">
+      <AnimateOnScroll>
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">Skills</h2>
+      </AnimateOnScroll>
+      <div className="space-y-10">
+        {data.map((category, index) => (
+          <AnimateOnScroll key={category.category} delay={150 * index}>
+            <div>
+              <h3 className="text-xl font-bold text-gray-700 mb-4 border-b-2 border-gray-200 pb-2">{category.category}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+                {category.items.map(skill => (
+                  <div key={skill.name} className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-gray-800">{skill.name}</p>
+                      <p className="text-sm text-gray-500">{skill.experience}</p>
+                    </div>
+                    <StarRating level={skill.level} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      ))}
+            </div>
+          </AnimateOnScroll>
+        ))}
+      </div>
     </div>
   </div>
 );
 
 // Worksセクション
 const Works = ({ data, onWorkClick }) => {
+  // ... (内部の `groupedWorks` と `WorkCard` コンポーネントは変更なし)
   const groupedWorks = data.reduce((acc, work) => {
     const category = work.category || "その他";
     if (!acc[category]) {
@@ -442,27 +511,35 @@ const Works = ({ data, onWorkClick }) => {
   );
 
   return (
-    <div className="p-8 md:p-12 animate-fade-in">
+    // "animate-fade-in" を削除
+    <div className="p-8 md:p-12">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Works</h2>
+        <AnimateOnScroll>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Works</h2>
+        </AnimateOnScroll>
 
-        {/* --- 注釈をここに追加 --- */}
-        <div className="bg-gray-100 border-l-4 border-gray-400 text-gray-800 p-4 mb-8 rounded-r-lg" role="alert">
-          <p className="font-bold text-sm">注記</p>
-          <ul className="list-disc list-inside text-sm mt-1 space-y-1">
-            <li>インターンシップ先の都合上、リポジトリやコードを公開できない制作物が含まれます。</li>
-            <li>守秘義務の観点から、一部スクリーンショットを掲載していない、または汎用的な画像に差し替えている制作物があります。</li>
-          </ul>
-        </div>
+        <AnimateOnScroll delay={100}>
+          <div className="bg-gray-100 border-l-4 border-gray-400 text-gray-800 p-4 mb-8 rounded-r-lg" role="alert">
+            <p className="font-bold text-sm">注記</p>
+            <ul className="list-disc list-inside text-sm mt-1 space-y-1">
+              <li>インターンシップ先の都合上、リポジトリやコードを公開できない制作物が含まれます。</li>
+              <li>守秘義務の観点から、一部スクリーンショットを掲載していない、または汎用的な画像に差し替えている制作物があります。</li>
+            </ul>
+          </div>
+        </AnimateOnScroll>
         
         {groupedWorks[fullWidthCategory] && (
           <section className="mb-12">
-            <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
-              {fullWidthCategory}
-            </h3>
+            <AnimateOnScroll delay={200}>
+              <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
+                {fullWidthCategory}
+              </h3>
+            </AnimateOnScroll>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {groupedWorks[fullWidthCategory].map(work => (
-                <WorkCard key={work.id} work={work} />
+              {groupedWorks[fullWidthCategory].map((work, index) => (
+                <AnimateOnScroll key={work.id} delay={150 * index}>
+                  <WorkCard work={work} />
+                </AnimateOnScroll>
               ))}
             </div>
           </section>
@@ -472,11 +549,15 @@ const Works = ({ data, onWorkClick }) => {
           {sideBySideCategories.map(category => (
             groupedWorks[category] && (
               <section key={category} className="min-w-0">
-                <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
-                  {category}
-                </h3>
-                {groupedWorks[category].map(work => (
-                  <WorkCard key={work.id} work={work} />
+                <AnimateOnScroll delay={200}>
+                  <h3 className="text-2xl font-bold text-gray-700 border-b-2 border-blue-200 pb-2 mb-6">
+                    {category}
+                  </h3>
+                </AnimateOnScroll>
+                {groupedWorks[category].map((work, index) => (
+                  <AnimateOnScroll key={work.id} delay={150 * index}>
+                     <WorkCard work={work} />
+                  </AnimateOnScroll>
                 ))}
               </section>
             )
@@ -724,6 +805,36 @@ export default function App() {
         }
         .animate-fade-in-fast {
           animation: fade-in-fast 0.3s ease-out forwards;
+        }
+
+        @keyframes star-appear {
+          0% {
+            transform: scale(0) rotate(-180deg);
+            opacity: 0;
+          }
+          60% {
+            transform: scale(1.2) rotate(10deg);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+          }
+        }
+        .animate-star-appear {
+          opacity: 0; /* アニメーション開始前は非表示 */
+          transform-origin: center;
+          animation: star-appear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .scroll-fade-in {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .scroll-fade-in.is-visible {
+          opacity: 1;
+          transform: translateY(0);
         }
       `}</style>
     </div>
