@@ -321,7 +321,11 @@ const portfolioData = {
       overview: "オープンキャンパス来場者、特にVR未経験者にVR技術の可能性と「没入型体験」の楽しさを伝える目的で、3人チームで開発した脱出ゲームです。私は主にビジュアル（UIデザイン、3Dモデル配置・調整、パフォーマンス最適化、環境演出）を担当。Meta Quest向けにXR Interaction Toolkitを活用し、コントローラーでの直感的な操作を通じて謎解きを進める、短いながらも没入感のある体験を提供しました。", 
       siteUrl: null,
       repoUrl: "https://github.com/takutaku14/VRGame-OC",
-      screenshots: [],
+      screenshots: [
+        './images/oc1.png',
+        './images/oc2.png',
+        './images/oc3.png',
+      ],
       stack: {
         "Engine": "Unity",
         "Language": "C#",
