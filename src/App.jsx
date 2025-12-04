@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { User, Briefcase, Terminal, Code, X, ArrowUpRight, Github, ChevronRight, ChevronLeft, Star, Cpu, Users, Info, Home as HomeIcon, Lock, Clock, Lightbulb } from 'lucide-react';
+import { User, Briefcase, Terminal, Code, X, ArrowUpRight, Github, ChevronRight, ChevronLeft, Star, Cpu, Users, Info, Home as HomeIcon, Lock, Clock, Lightbulb, Activity } from 'lucide-react';
 
 // --- Data Section ---
 const portfolioData = {
@@ -14,16 +14,16 @@ const portfolioData = {
     email: "mailto:your-email@example.com"
   },
   about: {
-    summary: "大学院でのAI研究と長期インターンでのPM経験を活かし、単なる機能実装ではなく「コスト削減」や「業務効率化」といったビジネスインパクトにコミットするエンジニアです。複雑な要件を整理する「計画性」と、泥臭い課題解決も厭わない「没頭力」で、価値あるプロダクトを創出します。",
-    introduction: "私の原動力は、困難な課題に対する「没頭力」と、ゴールへ確実に到達するための「緻密な計画性」です。大学院でのAI研究や長期インターンシップでの開発リーダー経験を通じて、技術的な難題に直面しても、泥臭い仮説検証と論理的な戦略立てで解決策を導き出してきました。「コスト70%削減」や「精度85%達成」といった結果は、そのプロセスの結晶です。技術とビジネスの両利きの視点を持ち、チームを巻き込みながら価値あるプロダクトを生み出します。",
+    summary: "大学院でのHCI（人とコンピュータの相互作用）研究と長期インターンでのPM経験を活かし、単なる機能実装ではなく「コスト削減」や「業務効率化」といったビジネスインパクトにコミットするエンジニアです。複雑な要件を整理する「計画性」と、泥臭い課題解決も厭わない「没頭力」で、価値あるプロダクトを創出します。",
+    introduction: "私の原動力は、困難な課題に対する「没頭力」と、ゴールへ確実に到達するための「緻密な計画性」です。大学院での「視線解析」の研究や長期インターンシップでの開発リーダー経験を通じて、技術的な難題に直面しても、泥臭い仮説検証と論理的な戦略立てで解決策を導き出してきました。「コスト70%削減」や「精度85%達成」といった結果は、そのプロセスの結晶です。技術とビジネスの両利きの視点を持ち、チームを巻き込みながら価値あるプロダクトを生み出します。",
     story: [
       {
         heading: "「没頭力」の原体験：音楽との出会い",
         content: "幼少期から音楽に親しみ、4歳でピアノ、16歳でホルンを始めました。一つのフレーズを納得いくまで数百回練習するなど、時間を忘れて物事にのめり込む「没頭力」と、目標達成のために数年単位で努力を続ける「継続力」はこの経験から育まれました。"
       },
       {
-        heading: "「緻密な計画」で挑む：AI・技術への探求",
-        content: "大学・大学院では、単なる知的好奇心を超え、「社会課題をどう技術で解決するか」というテーマに没頭しています。研究では精度が出ない壁にぶつかった際も、闇雲な試行錯誤ではなく、失敗データを分析して検証計画を立て直すプロセスを徹底し、精度を85%まで引き上げました。この「計画に基づいた粘り強さ」は、エンジニアリングにおいても私の最大の武器です。"
+        heading: "「緻密な計画」で挑む：研究への探求",
+        content: "大学院では、「VR空間における目の疲れ」をテーマに研究しています。学部時代、瞳孔（黒目）の開き具合で疲れを測ろうとしましたが、光の明るさで数値が変わってしまい、失敗しました。そこで、単なる試行錯誤ではなく失敗データを詳細に分析。「生理反応ではなく、目の動き方に着目すべき」という仮説を導き出し、研究の方針を大きく転換（ピボット）しました。この「データに基づく意思決定」と「柔軟な軌道修正」は、エンジニアリングにおいても私の最大の武器です。"
       },
       {
         heading: "「伝達力」とリーダーシップ",
@@ -56,26 +56,23 @@ const portfolioData = {
     {
       category: "AI / Backend",
       items: [
-        { name: "Python (FastAPI)", level: 5, experience: "4年" },
-        { name: "Azure OpenAI / LLM", level: 4, experience: "1年" },
+        { name: "Python (FastAPI / Pandas)", level: 5, experience: "4年" },
         { name: "Dify / RAG構築", level: 4, experience: "1年" },
         { name: "Java", level: 5, experience: "4年" },
       ]
     },
     {
-      category: "Frontend / Mobile",
+      category: "Frontend / Mobile / XR",
       items: [
         { name: "React / TypeScript", level: 4, experience: "2年" },
+        { name: "Unity (C#)", level: 4, experience: "2年" },
         { name: "Next.js", level: 3, experience: "2年" },
-        { name: "Unity (C#)", level: 3, experience: "2年" },
-        { name: "XR Interaction Toolkit", level: 3, experience: "1年" },
       ]
     },
     {
-      category: "Cloud / Infra / Security",
+      category: "Cloud / Infra / Research Tools",
       items: [
         { name: "AWS", level: 3, experience: "1年" },
-        { name: "Entra ID (SSO)", level: 3, experience: "半年" },
         { name: "Docker", level: 3, experience: "1年" },
         { name: "Git / GitHub", level: 4, experience: "3年" },
       ]
@@ -87,31 +84,36 @@ const portfolioData = {
       category: "長期インターンシップ",
       title: "社内向け独自AIエージェント基盤「思考のパートナー」",
       thumbnail: `https://placehold.co/800x500/2563EB/FFFFFF?text=AI+Agent+Platform`,
-      description: "年間2,000万円のコスト課題を内製化で70%削減。SSOによる堅牢なセキュリティと、誰もが使える直感的なUIを兼ね備えた全社共通AI基盤。",
+      description: "年間2,000万円のコスト課題を内製化で70%削減。SSO（一括ログイン）による堅牢なセキュリティと、誰もが使える直感的なUIを兼ね備えた全社共通AI基盤。",
       tags: ["コスト削減", "React", "Dify", "Azure OpenAI", "RAG", "Entra ID", "PM", "要件定義"],
       role: "PM & Lead Engineer",
       isPrivate: true,
       repoUrl: "#",
       team: "3名",
       duration: "6ヶ月",
-      focusPoint: "「コスト削減（-70%）」と「セキュリティ（SSO）」を両立させつつ、ITリテラシーを問わず誰もが使える「直感的なUI/UX」を実現した点。",
-      overview: "ChatGPT Enterprise版の全社導入にかかる莫大なコスト（年間約2,000万円）と、社内情報の散在による検索非効率を解決するために立ち上げられたプロジェクト。私はPM兼リードエンジニアとして、要件定義からアーキテクチャ設計、実装までを一貫して主導しました。単なるチャットボットではなく、社内ドキュメントを知識として持つ「RAG機能」や、社員の思考をガイドするUIを実装し、コストを約600万円に圧縮（70%削減）しつつ、業務効率を劇的に向上させました。",
+      focusPoint: "「コスト削減（-70%）」と「セキュリティ」を両立させつつ、ITリテラシーを問わず誰もが使える「直感的な操作画面」を実現した点。",
+      overview: "ChatGPT Enterprise版の全社導入にかかる莫大なコスト（年間約2,000万円）と、社内情報の散在による検索非効率を解決するために立ち上げられたプロジェクト。私はPM兼リードエンジニアとして、要件定義から設計、実装までを一貫して主導しました。単なるチャットボットではなく、社内ドキュメントを検索して回答する「RAG機能」や、社員の思考をガイドする画面を実装し、コストを約600万円に圧縮（70%削減）しつつ、業務効率を劇的に向上させました。",
       siteUrl: null,
-      screenshots: ['./images/ai-agent-1.png'],
+      screenshots: [
+        {
+          src: './images/ai-agent-1.png',
+          label: 'メインチャット画面：直感的なUIと参照元の明示機能'
+        },
+      ],
       stack: {
         "Role": "PM & Lead Engineer",
         "Frontend": "React, Vite, CSS Modules",
-        "Backend": "Dify (Workflow Mode)",
+        "Backend": "Dify (AIアプリ開発基盤)",
         "AI / Search": "Azure OpenAI (GPT-4), Perplexity API",
-        "Auth": "Microsoft Entra ID (SSO)",
+        "Auth": "Microsoft Entra ID (SSO認証)",
         "Key Tech": "Server-Sent Events, RAG"
       },
       points: [
-        "ビジネスインパクトの創出（コスト削減）：既存製品の導入ではなく、API従量課金とOSS基盤(Dify)を組み合わせた内製化を選択し、機能要件を満たしつつ年間約1,400万円（70%）のコスト削減見込みを立証しました。",
-        "エンタープライズ水準のセキュリティ：全社員が利用するMicrosoftアカウント（Entra ID）を用いたシングルサインオン(SSO)を実装。社内規定に準拠したセキュアな認証基盤を構築し、全社導入への障壁を取り除きました。",
-        "「AIの民主化」を加速する直感的なUI/UX：ITリテラシーを問わず誰もが使えるよう、ドラッグ＆ドロップでのファイル操作や「議事録要約」などのテンプレート機能を実装。複雑なプロンプト入力なしで高度なAI活用を可能にしました。",
-        "信頼性の担保（ハルシネーション対策）：業務利用における「AIの嘘」への不安を払拭するため、回答の根拠（Citation）を脚注形式で厳密に表示するUIを実装し、情報の信頼性を可視化しました。",
-        "技術的な壁の突破（没頭力）：Dify APIの特殊なストリーミング仕様による日本語文字化け問題に直面した際、バイナリ処理の独自デコーダーを実装するために数日間没頭して検証を実施。結果、AIの思考過程がリアルタイムに見える滑らかなUXを実現しました。"
+        "ビジネスインパクトの創出（コスト削減）：既存製品の導入ではなく、使った分だけ支払う方式（API従量課金）とオープンソース基盤(Dify)を組み合わせた内製化を選択。必要な機能を満たしつつ、年間約1,400万円（70%）のコスト削減見込みを立証しました。",
+        "企業基準のセキュリティ：全社員が利用するMicrosoftアカウントを用いたシングルサインオン(SSO)を実装。社内規定に準拠した安全なログインの仕組みを構築し、全社導入への障壁を取り除きました。",
+        "「AIの民主化」を加速する直感的な画面：ITに詳しくない社員でも使えるよう、ドラッグ＆ドロップでのファイル操作や「議事録要約」などのテンプレート機能を実装。複雑な指示（プロンプト）の入力なしで高度なAI活用を可能にしました。",
+        "信頼性の担保（AIの嘘対策）：業務利用における「AIの嘘」への不安を払拭するため、回答の根拠となる社内資料の参照元を脚注形式で厳密に表示する機能を実装し、情報の信頼性を可視化しました。",
+        "技術的な壁の突破（没頭力）：開発ツール(Dify API)の仕様による日本語文字化け問題に直面した際、バイナリデータ処理の独自プログラムを実装するために数日間没頭して検証を実施。結果、AIの思考過程がリアルタイムに見える滑らかな操作体験を実現しました。"
       ]
     },
     {
@@ -121,56 +123,68 @@ const portfolioData = {
       thumbnail: `https://placehold.co/800x500/A5B4FC/FFFFFF?text=Image+Processing+PF`,
       description: "複数部署の手作業（月160時間）を自動化する統合Web基盤。特定業務において処理時間を10分→12秒に短縮。",
       tags: ["業務改善", "Webプラットフォーム", "React", "Python", "AWS", "Canvas API", "技術リード"],
-      // 更新: role追加, isPrivate=true
       role: "Full-stack Engineer",
       isPrivate: true,
       repoUrl: "#", // NDAあり
       team: "2名",
       duration: "3ヶ月",
-      focusPoint: "現場ヒアリングに基づく「ツール選択型」のアーキテクチャ設計と、Canvas APIを用いたクライアントサイド高速化。",
-      overview: "各部署でバラバラに行われていた画像加工業務（リサイズ、トリミング、ロゴ配置など）を統合・効率化するためのWebプラットフォーム。私は技術リーダーとして、拡張性の高い「ツール選択型アーキテクチャ」を設計しました。LINEアイコン生成ツールやリネームツールなど、部署ごとのニッチな要望に応えるツール群をこの基盤上で展開し、全社的な生産性向上に貢献しました。",
+      focusPoint: "現場ヒアリングに基づく「ツール選択型」の設計と、ブラウザ上での高速処理によるサーバー負荷軽減。",
+      overview: "各部署でバラバラに行われていた画像加工業務（リサイズ、トリミング、ロゴ配置など）を統合・効率化するためのWebプラットフォーム。私は技術リーダーとして、拡張性の高い「ツール選択型アーキテクチャ」を設計しました。LINEアイコン生成ツールやリネームツールなど、部署ごとの細かい要望に応えるツール群をこの基盤上で展開し、全社的な生産性向上に貢献しました。",
       siteUrl: null,
-      screenshots: ['./images/platform.png'],
+      screenshots: [
+        {
+          src: './images/platform.png',
+          label: 'ツール選択画面：部署ごとのニーズに合わせた機能一覧'
+        }
+      ],
       stack: {
         "Role": "Tech Lead",
         "Frontend": "React, TypeScript",
         "Backend": "Python, FastAPI, AWS Lambda",
-        "Core Tech": "Canvas API, Web Workers",
+        "Core Tech": "Canvas API (ブラウザ描画技術), Web Workers"
       },
       points: [
         "徹底した現場ヒアリングと課題抽出：開発前に3部署へヒアリングを行い、「画一的な自動化では対応できない（部署ごとにルールが違う）」という本質的な課題を発見。それに基づき、柔軟にツールを選べるプラットフォーム構成を提案しました。",
-        "クライアントサイド処理による高速化：サーバー負荷とセキュリティリスクを低減するため、Canvas APIとWeb Workersを用いてブラウザ内で画像処理を完結させる設計を採用。大量枚数の処理でもUIが固まらない快適な動作を実現しました。",
+        "ブラウザ完結処理による高速化：サーバー負荷とセキュリティリスクを低減するため、Canvas API等を用いてブラウザ内（利用者のPC側）で画像処理を完結させる設計を採用。大量枚数の処理でも画面が固まらない快適な動作を実現しました。",
         "50倍の生産性向上：特に手間の掛かっていたLINEミニアプリアイコン作成業務において、1件10分の作業を12秒に短縮。月間160時間の工数削減を達成しました。"
       ]
     },
     {
       id: 3,
-      category: "研究",
-      title: "VR眼精疲労のリアルタイム予測システム",
-      thumbnail: `https://placehold.co/800x500/FCA5A5/FFFFFF?text=VR+Research`,
-      description: "アイトラッキングによりVRの「目の疲れ」を可視化。60%の精度停滞から、粘り強い仮説検証で85%まで向上。",
-      tags: ["機械学習", "Python", "データ分析", "VR/AR", "HCI", "研究発表"],
-      // 更新: roleなし(個人), repoUrl=null(リポジトリなし)
-      role: null,
+      category: "研究 (M1 / HCI)",
+      title: "視線の『ズレ』を解析し、VRの「目の疲れ」をリアルタイム検知するシステム",
+      thumbnail: `https://placehold.co/800x500/FCA5A5/FFFFFF?text=Eye+Fatigue+Detection`,
+      description: "従来の測定法の限界（光によるノイズ）を、視線の「正確さ」を測る新手法で解決。AIサーバーを使わず、VRゴーグル単体で動く軽量システム。",
+      tags: ["HCI", "信号処理", "Unity", "C#", "視線追跡", "FQlS", "研究"],
+      role: "Researcher & Lead Developer",
       isPrivate: false,
       repoUrl: null, // リポジトリなし
       team: "個人研究",
-      duration: "1年",
-      focusPoint: "60%の壁を突破するために、先行研究(CHI 2015)から『FQlS』指標を導入した仮説検証プロセスと実装力。",
-      overview: "VR普及の壁である「眼精疲労」を、主観（アンケート）ではなく、視線の動きから客観的に検知するシステムの構築。VR利用者の安全性を守るための研究です。",
+      duration: "継続中",
+      focusPoint: "光の影響を受けやすい「瞳孔」ではなく、疲れが直接動作に現れる「視線のズレ」に着目し、精度と安定性を劇的に改善した点。",
+      overview: "VR利用者の安全を守るため、目の疲れ（眼精疲労）を自動検知するシステムの研究です。学部時代は「瞳孔（黒目）の大きさ」の変化を用いていましたが、光の明るさで数値が変わってしまうなど、精度が60%程度で頭打ちになる課題に直面しました。そこで大学院ではアプローチを刷新し、「疲れがたまると、見たい場所から視線がわずかにズレる」という現象（運動制御能力の低下）に着目。先行研究の『FQlS（視線のズレ具合を数値化した指標）』をVRに応用することで、周囲の明るさに左右されない安定した検知を実現しました。高価なAIサーバーに頼らず、計算資源の限られたVRゴーグル単体でも動く、軽量な設計にこだわっています。",
       siteUrl: null,
-      screenshots: [],
+      screenshots: [
+        {
+          src: './images/re2.png',
+          label: 'FQlSの概念図：ターゲット（白）と実際の視線（青）の空間的ズレを解析'
+        },
+        {
+          src: './images/re3.png',
+          label: 'VR実験環境：HMD装着時の視線データ取得イメージ'
+        }
+      ],
       stack: {
-        "Theme": "VR眼精疲労のリアルタイム検知",
-        "Data": "Eye Tracking (瞳孔径, サッケード, FQlS)",
-        "Model": "Random Forest",
-        "Tech": "Python (Scikit-learn, Pandas)",
-        "Accuracy": "85% (F1-score)"
+        "Theme": "眼球運動解析 (Oculomotor Behavior Analysis)",
+        "Algorithm": "FQlS (視線のズレ指標), I-VT Filter (速度による分類)",
+        "Metric": "空間的正確性 (Spatial Accuracy)",
+        "Platform": "Unity (C#), VIVE Pro Eye",
+        "Key Theory": "Abdulin et al. (CHI 2015), Lohr et al. (ETRA 2016)"
       },
       points: [
-        "先行研究の導入と実装（突破力）：瞳孔径のみでは精度60%で頭打ちとなったため、CHI 2015の論文を参照し『FQlS (Fixation Qualitative Score)』を導入しました。これは「疲労すると注視点がターゲットからズレる（空間的正確性が下がる）」という指標であり、これを特徴量として実装することで精度を85%まで向上させました。",
-        "リアルタイム性の追求：実用化を見据え、処理の軽い特徴量抽出アルゴリズムを選定。VR体験を阻害せずにバックグラウンドで疲労判定を行うシステムを実現しました。",
-        "社会実装への視点：VRゲームの品質管理や医療リハビリの安全確保など、具体的な利用シーンを想定して研究を進めています。"
+        "課題の再定義と方針転換（ピボット）：瞳孔は自律神経（副交感神経）の影響を受けるため、自分の意思で制御できず、ノイズが多いことをデータから確認。対して、眼球運動は「筋肉の制御」であるため、疲れが直接「動きの鈍さ」として現れる点に着目し、より確実な指標へ切り替えました。",
+        "理論の実用化：先行研究(Lohr et al., 2016)で定義された「FQlS = ターゲットと視線の距離の平均」を採用。これをVR空間の3次元計算に変換し、ゴーグルの装着ズレを補正するプログラムを組み込むことで、実用的な精度を確保しています。",
+        "省エネ・軽量設計：ディープラーニング等の重いAI処理を使わず、目の動きの「速さ」と「位置」を用いたシンプルな計算のみで実装。これにより、将来的にスマホVRやスタンドアロンVR（PC不要のVR）でも動く軽量設計を実現しています。"
       ]
     },
     {
@@ -180,16 +194,19 @@ const portfolioData = {
       thumbnail: `https://placehold.co/800x500/D8B4FE/FFFFFF?text=VR+Escape+Game`,
       description: "Unityで開発した没入型VRゲーム。VR酔い対策などユーザー体験（UX）にこだわり、来場者へ「ワクワク」を提供。",
       tags: ["Unity", "VR", "C#", "XR Interaction Toolkit", "チーム開発", "UXデザイン"],
-      // 更新: role追加, repoUrlあり
       role: "Visuals / Performance Optimization",
       isPrivate: false,
       repoUrl: "https://github.com/takutaku14/VRGame-OC", // 公開中
       team: "3名",
       duration: "2ヶ月",
-      focusPoint: "VR酔いを防ぐための移動方式の実装と、Quest単体で動作させるためのパフォーマンス最適化。",
-      overview: "オープンキャンパス来場者にVRの楽しさを伝えるために開発した脱出ゲーム。3名チームで、私はビジュアル演出とパフォーマンス最適化を担当しました。",
+      focusPoint: "VR酔いを防ぐための移動方式の実装と、Quest単体で動作させるための処理の軽量化。",
+      overview: "オープンキャンパス来場者にVRの楽しさを伝えるために開発した脱出ゲーム。3名チームで、私はビジュアル演出とパフォーマンス最適化（処理落ち対策）を担当しました。",
       siteUrl: null,
-      screenshots: ['./images/oc1.png', './images/oc2.png', './images/oc3.png'],
+      screenshots: [
+        { src: './images/oc1.png', label: 'ゲーム内世界の場面例' },
+        { src: './images/oc2.png', label: '4桁の番号を手に入れることでゲームを進める' },
+        { src: './images/oc3.png', label: '謎解きの例' }
+      ],
       stack: {
         "Engine": "Unity",
         "Language": "C#",
@@ -197,8 +214,8 @@ const portfolioData = {
         "Role": "Visuals (Assets, Lighting, Animation)"
       },
       points: [
-        "ビジュアルとパフォーマンスの両立：アセット作成や適切な配置に加え、ライティング（光影）のベイク処理やアニメーション等のエフェクト調整を担当。モバイルVR（Meta Quest）の制約下でも快適に動作するよう、徹底的なパフォーマンス最適化を行いました。",
-        "UXへの徹底したこだわり：多くの来場者がVR初体験であることを考慮し、VR酔いを防ぐ移動方式の採用や、直感的に操作できるインタラクション設計に注力しました。"
+        "見た目の良さと軽さの両立：3Dモデルの配置に加え、光と影の事前計算（ベイク処理）やエフェクト調整を担当。スマホ並みの処理能力しかないVR機器（Meta Quest）でも快適に動くよう、徹底的な軽量化を行いました。",
+        "体験へのこだわり（UX）：多くの来場者がVR初体験であることを考慮し、VR酔いを防ぐ移動方式（テレポート）の採用や、直感的に操作できる仕掛け作りに注力しました。"
       ]
     },
     {
@@ -208,7 +225,6 @@ const portfolioData = {
       thumbnail: `https://placehold.co/800x500/93C5FD/FFFFFF?text=Orchestra`,
       description: "100人超の団員を率い、武道館での演奏を指揮。多様な個性を一つのハーモニーにまとめる統率力を発揮。",
       tags: ["リーダーシップ", "マネジメント", "チームビルディング", "コミュニケーション"],
-      // 更新: role追加, repoUrl=null
       role: "Conductor",
       isPrivate: false,
       repoUrl: null, // リポジトリなし
@@ -316,8 +332,29 @@ const SkillDots = ({ level }) => {
   );
 };
 
-const ImageCarousel = ({ images, title }) => {
+const ImageCarousel = ({ images, title, autoPlayInterval = 4000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // 画像データが「文字列」か「オブジェクト」かを判定して統一するヘルパー
+  const getImageData = (item) => {
+    return typeof item === 'string'
+      ? { src: item, label: null }
+      : item;
+  };
+
+  const currentImage = getImageData(images[currentIndex]);
+
+  // 自動スライドショー機能
+  useEffect(() => {
+    if (!images || images.length <= 1 || isPaused) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, autoPlayInterval);
+
+    return () => clearInterval(timer);
+  }, [images, isPaused, autoPlayInterval]);
 
   if (!images || images.length === 0) return null;
 
@@ -332,40 +369,61 @@ const ImageCarousel = ({ images, title }) => {
   const isSingle = images.length <= 1;
 
   return (
-    <div className="relative w-full bg-gray-50 rounded-xl overflow-hidden border border-gray-100 group">
-      <div className="aspect-video w-full flex items-center justify-center bg-gray-100">
-        <img
-          src={images[currentIndex]}
-          alt={`${title} - slide ${currentIndex + 1}`}
-          className="max-h-full max-w-full object-contain"
-        />
+    <div className="flex flex-col gap-3">
+      {/* 画像エリア */}
+      <div
+        className="relative w-full bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 group shadow-sm transition-shadow duration-300 hover:shadow-md"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="aspect-video w-full flex items-center justify-center bg-gray-100/50">
+          <img
+            src={currentImage.src}
+            alt={`${title} - slide ${currentIndex + 1}`}
+            className="max-h-full max-w-full object-contain transition-transform duration-500 ease-out"
+          />
+        </div>
+
+        {!isSingle && (
+          <>
+            {/* ナビゲーションボタン */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/80 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <ChevronLeft size={20} strokeWidth={2.5} />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/80 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <ChevronRight size={20} strokeWidth={2.5} />
+            </button>
+
+            {/* インジケーター */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 px-3 py-1.5 bg-gray-900/20 backdrop-blur-md rounded-full">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-4' : 'bg-white/60 hover:bg-white/80'
+                    }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
-      {!isSingle && (
-        <>
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white text-gray-800 rounded-full shadow-sm backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white text-gray-800 rounded-full shadow-sm backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          >
-            <ChevronRight size={20} />
-          </button>
-
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 px-3 py-1 bg-black/20 backdrop-blur-sm rounded-full">
-            {images.map((_, idx) => (
-              <div
-                key={idx}
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${idx === currentIndex ? 'bg-white' : 'bg-white/50'}`}
-              />
-            ))}
-          </div>
-        </>
-      )}
+      {/* キャプションエリア */}
+      <div className="px-4 min-h-[1.5rem] flex items-center justify-center">
+        <p
+          key={currentIndex}
+          className="text-sm text-gray-600 font-normal leading-relaxed text-center animate-fade-in transition-opacity duration-300"
+        >
+          {currentImage.label || ""}
+        </p>
+      </div>
     </div>
   );
 };
@@ -381,9 +439,9 @@ const Home = ({ data, onWorkClick, onChangeView }) => {
       workId: 1,
     },
     {
-      title: "技術への没頭と探求",
-      description: "難題に対する深い集中力と、粘り強い仮説検証で壁を突破します。",
-      icon: Cpu,
+      title: "研究と技術的探求",
+      description: "HCI/VR研究において、失敗から学び論理的にピボットする探究心を持っています。",
+      icon: Activity,
       workId: 3,
     },
     {
@@ -603,14 +661,32 @@ const Skills = ({ data }) => {
 };
 
 const Works = ({ data, onWorkClick }) => {
-  const categories = ["長期インターンシップ", "研究", "学内プロジェクト", "その他の活動"];
+  // データを「インターン（Featured）」と「その他（Standard）」に分離
+  const featuredWorks = data.filter(w => w.category === "長期インターンシップ");
+  const standardWorks = data.filter(w => w.category !== "長期インターンシップ");
+
+  // サムネイル画像を取得するヘルパー関数
+  // 優先順位: screenshots[0] > thumbnail > null
+  const getThumbnailSrc = (work) => {
+    // 1. screenshotsの1枚目があればそれを使用
+    if (work.screenshots && work.screenshots.length > 0) {
+      const firstItem = work.screenshots[0];
+      // データがオブジェクト形式なら.src、文字列ならそのまま使用
+      return typeof firstItem === 'object' ? firstItem.src : firstItem;
+    }
+    // 2. screenshotsがない場合、従来のthumbnailプロパティを使用（フォールバック）
+    if (work.thumbnail) return work.thumbnail;
+
+    // 3. 画像なし
+    return null;
+  };
 
   return (
     <div className="py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         <SectionHeader icon={Code} title="Works & Projects" />
 
-        <AnimateOnScroll className="mb-10">
+        <AnimateOnScroll className="mb-12">
           <div className="flex items-start gap-3 bg-gray-100/60 p-4 rounded-xl border border-gray-200/50">
             <Info className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
             <div>
@@ -622,79 +698,164 @@ const Works = ({ data, onWorkClick }) => {
           </div>
         </AnimateOnScroll>
 
-        {categories.map((cat, catIdx) => {
-          const categoryWorks = data.filter(w => w.category === cat);
-          if (categoryWorks.length === 0) return null;
+        {/* --- Featured Section (長期インターンシップ) --- */}
+        {featuredWorks.length > 0 && (
+          <div className="mb-16">
+            <AnimateOnScroll>
+              <div className="flex items-center gap-3 mb-6">
+                <Star className="w-6 h-6 text-blue-500" fill="currentColor" />
+                <h3 className="text-xl font-bold text-gray-900">Featured Projects</h3>
+              </div>
+            </AnimateOnScroll>
 
-          const isHighlight = cat === "長期インターンシップ";
+            <div className="grid grid-cols-1 gap-8">
+              {featuredWorks.map((work, idx) => {
+                const thumbSrc = getThumbnailSrc(work);
 
-          return (
-            <div key={cat} className="mb-16 last:mb-0">
-              <AnimateOnScroll>
-                <div className="flex items-center gap-4 mb-6">
-                  <h3 className="text-lg font-bold text-gray-800">{cat}</h3>
-                  <div className="h-px bg-gray-200 flex-grow"></div>
-                </div>
-              </AnimateOnScroll>
-
-              <div className={`grid gap-6 ${isHighlight ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
-                {categoryWorks.map((work, idx) => (
-                  <AnimateOnScroll key={work.id} delay={idx * 50}>
+                return (
+                  <AnimateOnScroll key={work.id} delay={idx * 100}>
                     <div
                       onClick={() => onWorkClick(work)}
-                      className={`group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col
-                         ${isHighlight ? 'md:flex-row md:h-72' : 'h-full'}`}
+                      className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col md:flex-row md:h-80"
                     >
-                      <div className={`overflow-hidden bg-gray-100 relative ${isHighlight ? 'md:w-5/12 h-56 md:h-full' : 'h-48 w-full'}`}>
-                        {work.thumbnail ? (
-                          <img src={work.thumbnail} alt={work.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      {/* サムネイルエリア */}
+                      <div className="overflow-hidden bg-gray-100 relative h-56 md:h-full md:w-5/12">
+                        {thumbSrc ? (
+                          <img
+                            src={thumbSrc}
+                            alt={work.title}
+                            loading="lazy"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-gray-300"><Code size={48} /></div>
+                          // 画像がない場合のフォールバック（アイコン表示）
+                          <div className="w-full h-full flex items-center justify-center text-gray-300 bg-gray-50">
+                            <Code size={48} />
+                          </div>
                         )}
-                        {/* 修正点: 鍵マークはリポジトリがあるが非公開(repoUrl="#" && isPrivate)の場合のみ表示 */}
+
+                        {/* Private Repo バッジ */}
                         {work.repoUrl === '#' && work.isPrivate && (
-                          <div className="absolute top-3 right-3 bg-gray-900/80 text-white p-1.5 rounded-full backdrop-blur-sm" title="Private Repository">
+                          <div className="absolute top-3 right-3 bg-gray-900/80 text-white p-1.5 rounded-full backdrop-blur-sm shadow-sm" title="Private Repository">
                             <Lock size={14} />
                           </div>
                         )}
                       </div>
 
-                      <div className={`p-6 flex flex-col justify-between flex-grow ${isHighlight ? 'md:w-7/12' : ''}`}>
+                      <div className="p-6 md:p-8 flex flex-col justify-between flex-grow md:w-7/12">
                         <div>
-                          <div className="flex flex-wrap gap-2 mb-2">
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            <Badge color="blue">Featured</Badge>
                             <Badge color="gray">{work.category}</Badge>
-                            {isHighlight && <Badge color="blue">Featured</Badge>}
-                            {/* 修正点: 役割(Role)をカードに表示 */}
                             {work.role && <Badge color="dark">{work.role}</Badge>}
                           </div>
-                          <h4 className={`font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors ${isHighlight ? 'text-2xl' : 'text-lg'}`}>
+                          <h4 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors text-2xl">
                             {work.title}
                           </h4>
-                          <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-2 md:line-clamp-3">
+                          <p className="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">
                             {work.description}
                           </p>
                         </div>
 
                         <div className="flex flex-wrap gap-2 mt-auto">
-                          {work.tags.slice(0, isHighlight ? 4 : 3).map(tag => (
-                            <span key={tag} className="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-1 rounded border border-gray-100">
+                          {work.tags.slice(0, 5).map(tag => (
+                            <span key={tag} className="text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded border border-gray-100">
                               #{tag}
                             </span>
                           ))}
-                          {work.tags.length > (isHighlight ? 4 : 3) && (
+                          {work.tags.length > 5 && (
                             <span className="text-xs font-bold text-gray-400 flex items-center px-1">
-                              +{work.tags.length - (isHighlight ? 4 : 3)}
+                              +{work.tags.length - 5}
                             </span>
                           )}
                         </div>
                       </div>
                     </div>
                   </AnimateOnScroll>
-                ))}
-              </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+        )}
+
+        {/* --- Standard Section (その他の活動・研究) --- */}
+        {standardWorks.length > 0 && (
+          <div>
+            <AnimateOnScroll>
+              <div className="flex items-center gap-3 mb-6">
+                <Code className="w-6 h-6 text-gray-400" />
+                <h3 className="text-xl font-bold text-gray-900">Other Works & Research</h3>
+              </div>
+            </AnimateOnScroll>
+
+            {/* Bento Grid形式で配置 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {standardWorks.map((work, idx) => {
+                const thumbSrc = getThumbnailSrc(work);
+
+                return (
+                  <AnimateOnScroll key={work.id} delay={idx * 50}>
+                    <div
+                      onClick={() => onWorkClick(work)}
+                      className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 cursor-pointer overflow-hidden h-full flex flex-col"
+                    >
+                      {/* サムネイルエリア */}
+                      <div className="overflow-hidden bg-gray-100 relative h-48 w-full">
+                        {thumbSrc ? (
+                          <img
+                            src={thumbSrc}
+                            alt={work.title}
+                            loading="lazy"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                        ) : (
+                          // 画像がない場合のフォールバック
+                          <div className="w-full h-full flex items-center justify-center text-gray-300 bg-gray-50">
+                            <Code size={48} />
+                          </div>
+                        )}
+
+                        {/* Private Repo バッジ */}
+                        {work.repoUrl === '#' && work.isPrivate && (
+                          <div className="absolute top-3 right-3 bg-gray-900/80 text-white p-1.5 rounded-full backdrop-blur-sm shadow-sm" title="Private Repository">
+                            <Lock size={14} />
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                          <div className="flex flex-wrap gap-2 mb-2">
+                            <Badge color="gray">{work.category}</Badge>
+                          </div>
+                          <h4 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors text-lg">
+                            {work.title}
+                          </h4>
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                            {work.description}
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                          {work.tags.slice(0, 3).map(tag => (
+                            <span key={tag} className="text-xs font-medium text-gray-500 bg-gray-50 px-2 py-1 rounded border border-gray-100">
+                              #{tag}
+                            </span>
+                          ))}
+                          {work.tags.length > 3 && (
+                            <span className="text-xs font-bold text-gray-400 flex items-center px-1">
+                              +{work.tags.length - 3}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </AnimateOnScroll>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -729,7 +890,6 @@ const WorkDetailModal = ({ work, onClose }) => {
           <div>
             <div className="flex gap-2 mb-2">
               <Badge color="blue">{work.category}</Badge>
-              {/* 修正点: repoUrlが'#'(NDA)の場合のみバッジを表示 */}
               {work.repoUrl === '#' && work.isPrivate && (
                 <span className="flex items-center gap-1 text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-lg border border-gray-200">
                   <Lock size={12} /> NDA Protected
@@ -795,7 +955,6 @@ const WorkDetailModal = ({ work, onClose }) => {
             </div>
 
             <div className="lg:col-span-1 space-y-6 md:space-y-8">
-              {/* 修正点: Roleを追加して強調 */}
               <div className="grid grid-cols-1 gap-3">
                 {work.role && (
                   <div className="bg-blue-50 border border-blue-100 rounded-xl p-3 flex items-center gap-3">
@@ -854,16 +1013,13 @@ const WorkDetailModal = ({ work, onClose }) => {
                 </div>
               </div>
 
-              {/* 修正点: repoUrlがnullの場合はボタンエリア自体を非表示にする */}
               {work.repoUrl && (
                 <div className="flex flex-col gap-3 hidden sm:flex">
-                  {/* repoUrlが'#'(NDA)の場合 */}
                   {work.repoUrl === '#' ? (
                     <button disabled className="w-full flex items-center justify-center gap-2 bg-gray-100 text-gray-400 font-bold py-3.5 rounded-xl cursor-not-allowed border border-gray-200">
                       <Lock size={18} /> Private Repo (NDA)
                     </button>
                   ) : (
-                    /* 通常の公開リポジトリ */
                     <a href={work.repoUrl} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-3.5 rounded-xl hover:bg-black transition-colors shadow-sm hover:shadow-lg">
                       <Github size={18} /> View on GitHub
                     </a>
@@ -885,7 +1041,6 @@ const WorkDetailModal = ({ work, onClose }) => {
             閉じる
           </button>
 
-          {/* スマホ版フッター: repoUrlがnullでない場合のみ表示 */}
           {work.repoUrl && (
             work.repoUrl === '#' ? (
               <button disabled className="flex-1 flex items-center justify-center bg-gray-100 text-gray-400 font-bold py-3 rounded-xl border border-gray-200 text-sm">
@@ -931,7 +1086,6 @@ const Dock = ({ activeView, setActiveView }) => {
                 }`}>
                 <item.icon size={22} strokeWidth={isActive ? 2.5 : 2} />
               </div>
-              {/* 修正点: ラベルを常時表示 (サイズ調整) */}
               <span className={`text-[10px] font-bold tracking-wide transition-colors duration-300 ${isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
                 }`}>
                 {item.label}
