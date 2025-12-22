@@ -96,9 +96,30 @@ const portfolioData = {
       siteUrl: null,
       screenshots: [
         {
-          src: './images/ai-agent-1.png',
-          label: 'メインチャット画面：直感的なUIと参照元の明示機能'
+          src: './images/ai (1).png',
+          label: 'Welcome Screen：ユーザーがまず初めに訪れる画面。時間帯で変わる挨拶と名前で親しみやすい印象に。'
         },
+        {
+          src: './images/ai (2).png',
+          label: '検索モード：ユーザーが目的に合わせて選択'
+        },
+        {
+          src: './images/ai (3).png',
+          label: '提案型チャット画面：次のアクションをAIから提案する'
+        },
+        {
+          src: './images/ai (4).png',
+          label: 'ウィザード：初回訪問時はウィザードで案内'
+        },
+        {
+          src: './images/ai (5).png',
+          label: 'AIスタイル：ユーザーは表現の好みを選択できる'
+        },
+        {
+          src: './images/ai (6).png',
+          label: 'Ready：頼れるパートナーとしての印象を与える'
+        },
+
       ],
       stack: {
         "Role": "PM & Lead Engineer",
