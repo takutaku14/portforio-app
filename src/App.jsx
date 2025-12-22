@@ -492,12 +492,10 @@ const Home = ({ data, onWorkClick, onChangeView }) => {
           <div className="flex flex-wrap gap-4">
             <button
               onClick={() => onChangeView('Works')}
-              className="group relative px-8 py-4 btn-gradient text-white font-bold rounded-2xl overflow-hidden flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
+              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 active:scale-[0.98]"
             >
-              <span className="absolute inset-0 shimmer pointer-events-none"></span>
               <Briefcase size={20} />
               <span>View Works</span>
-              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
             {data.social.github && (
               <a
