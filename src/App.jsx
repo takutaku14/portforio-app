@@ -285,8 +285,8 @@ const AnimateOnScroll = ({ children, delay = 0, threshold = 0.1, className = '' 
 };
 
 const SectionHeader = ({ icon: Icon, title }) => (
-  <div className="flex items-center gap-3 mb-8 md:mb-10">
-    <div className="p-3 bg-blue-50 rounded-xl text-blue-600 shadow-sm">
+  <div className="flex items-center gap-4 mb-10">
+    <div className="p-3.5 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-500 text-white shadow-lg shadow-violet-500/25">
       <Icon size={24} strokeWidth={2.5} />
     </div>
     <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{title}</h2>
@@ -296,8 +296,11 @@ const SectionHeader = ({ icon: Icon, title }) => (
 const Card = ({ children, className = "", hover = true, onClick }) => (
   <div
     onClick={onClick}
-    className={`bg-white rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8 
-    ${hover ? 'hover:shadow-md hover:border-blue-300 hover:ring-2 hover:ring-blue-100 transition-all duration-300 cursor-pointer' : ''} 
+    tabIndex={hover && onClick ? 0 : undefined}
+    role={hover && onClick ? "button" : undefined}
+    onKeyDown={hover && onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } } : undefined}
+    className={`glass-strong rounded-2xl p-6 md:p-8 
+    ${hover ? 'hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2' : ''} 
     ${className}`}
   >
     {children}
@@ -306,12 +309,12 @@ const Card = ({ children, className = "", hover = true, onClick }) => (
 
 const Badge = ({ children, color = "blue" }) => {
   const styles = {
-    blue: "bg-blue-50 text-blue-700 border-blue-100",
-    gray: "bg-gray-50 text-gray-600 border-gray-200",
-    dark: "bg-gray-800 text-white border-gray-800",
+    blue: "bg-gradient-to-r from-blue-500/10 to-violet-500/10 text-blue-700 border-blue-200/50",
+    gray: "bg-gray-100/80 text-gray-600 border-gray-200/50",
+    dark: "bg-gradient-to-r from-gray-800 to-gray-900 text-white border-gray-700",
   };
   return (
-    <span className={`text-xs font-semibold px-2.5 py-1 rounded-lg border ${styles[color]}`}>
+    <span className={`text-xs font-semibold px-3 py-1.5 rounded-full border backdrop-blur-sm ${styles[color]}`}>
       {children}
     </span>
   );
@@ -452,19 +455,30 @@ const Home = ({ data, onWorkClick, onChangeView }) => {
   ];
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 md:py-20">
-      <div className="max-w-5xl mx-auto w-full px-4 md:px-8">
+    <div className="min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 md:py-20 relative overflow-hidden">
+      {/* Gradient Mesh Background */}
+      <div className="mesh-gradient">
+        <div className="mesh-orb"></div>
+      </div>
+
+      <div className="max-w-5xl mx-auto w-full px-4 md:px-8 relative z-10">
         <AnimateOnScroll>
           <div className="mb-6">
-            <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-blue-700 font-bold text-sm mb-4 border border-blue-100">
+            <span className="inline-flex items-center gap-2 py-2 px-5 rounded-full glass text-sm font-semibold text-gray-700 border-0">
+              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 animate-pulse"></span>
               Strategic Engineer / Project Manager
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.15] whitespace-pre-line mb-6">
-            {data.catchphrase.main}
+
+          {/* Gradient Headline */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] whitespace-pre-line mb-6">
+            <span className="gradient-text">{data.catchphrase.main.split('\n')[0]}</span>
+            <br />
+            <span className="text-gray-900">{data.catchphrase.main.split('\n')[1]}</span>
           </h1>
+
           <div className="flex flex-col md:flex-row gap-6 items-start mb-8">
-            <div className="w-12 h-1 bg-blue-500 mt-3 rounded-full flex-shrink-0"></div>
+            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 mt-3 rounded-full flex-shrink-0"></div>
             <p className="text-lg md:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl">
               {data.catchphrase.sub}
             </p>
@@ -474,20 +488,23 @@ const Home = ({ data, onWorkClick, onChangeView }) => {
             {data.about.summary}
           </p>
 
+          {/* Premium CTAs */}
           <div className="flex flex-wrap gap-4">
             <button
               onClick={() => onChangeView('Works')}
-              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-1 flex items-center gap-2"
+              className="group relative px-8 py-4 btn-gradient text-white font-bold rounded-2xl overflow-hidden flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2"
             >
+              <span className="absolute inset-0 shimmer pointer-events-none"></span>
               <Briefcase size={20} />
-              View Works
+              <span>View Works</span>
+              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
             {data.social.github && (
               <a
                 href={data.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-white border border-gray-200 text-gray-800 font-bold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center gap-2 shadow-sm"
+                className="px-8 py-4 glass text-gray-800 font-bold rounded-2xl hover:bg-white/90 transition-all flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 hover:-translate-y-1 hover:shadow-lg"
               >
                 <Github size={20} />
                 Portfolio Source
@@ -496,10 +513,11 @@ const Home = ({ data, onWorkClick, onChangeView }) => {
           </div>
         </AnimateOnScroll>
 
-        <div className="mt-20">
+        <div className="mt-24">
           <AnimateOnScroll delay={200}>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Core Strengths</h3>
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">Core Strengths</h3>
+              <div className="h-px flex-1 ml-6 bg-gradient-to-r from-gray-200 to-transparent"></div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -507,15 +525,20 @@ const Home = ({ data, onWorkClick, onChangeView }) => {
                 const work = data.works.find(w => w.id === area.workId);
                 return (
                   <Card key={index} onClick={() => work && onWorkClick(work)} className="h-full flex flex-col group relative overflow-hidden">
-                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                      <area.icon size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">{area.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">{area.description}</p>
+                    {/* Gradient accent on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-violet-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                    <div className="flex items-center text-blue-600 text-sm font-bold mt-auto pt-4 border-t border-gray-50 group-hover:border-gray-100 transition-colors">
-                      <span className="group-hover:mr-2 transition-all">View Project</span>
-                      <ArrowUpRight size={16} className="ml-1 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                    <div className="relative z-10">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-blue-50 to-violet-50 text-blue-600 group-hover:from-blue-500 group-hover:to-violet-500 group-hover:text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-violet-500/25">
+                        <area.icon size={26} />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-3">{area.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">{area.description}</p>
+
+                      <div className="flex items-center text-sm font-bold mt-auto pt-4 border-t border-gray-100 group-hover:border-violet-100 transition-colors">
+                        <span className="gradient-text group-hover:mr-2 transition-all">View Project</span>
+                        <ArrowUpRight size={16} className="ml-1 text-violet-500 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                      </div>
                     </div>
                   </Card>
                 );
@@ -701,9 +724,12 @@ const Works = ({ data, onWorkClick }) => {
         {featuredWorks.length > 0 && (
           <div className="mb-16">
             <AnimateOnScroll>
-              <div className="flex items-center gap-3 mb-6">
-                <Star className="w-6 h-6 text-blue-500" fill="currentColor" />
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white">
+                  <Star className="w-5 h-5" fill="currentColor" />
+                </div>
                 <h3 className="text-xl font-bold text-gray-900">Featured Projects</h3>
+                <div className="h-px flex-1 ml-4 bg-gradient-to-r from-gray-200 to-transparent"></div>
               </div>
             </AnimateOnScroll>
 
@@ -715,20 +741,24 @@ const Works = ({ data, onWorkClick }) => {
                   <AnimateOnScroll key={work.id} delay={idx * 100}>
                     <div
                       onClick={() => onWorkClick(work)}
-                      className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col md:flex-row md:h-80"
+                      className="group glass-strong rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col md:flex-row md:h-80 relative"
                     >
+                      {/* Gradient accent bar */}
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-violet-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
                       {/* サムネイルエリア */}
-                      <div className="overflow-hidden bg-gray-100 relative h-56 md:h-full md:w-5/12">
+                      <div className="overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 relative h-56 md:h-full md:w-5/12">
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                         {thumbSrc ? (
                           <img
                             src={thumbSrc}
                             alt={work.title}
                             loading="lazy"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                           />
                         ) : (
-                          // 画像がない場合のフォールバック（アイコン表示）
-                          <div className="w-full h-full flex items-center justify-center text-gray-300 bg-gray-50">
+                          <div className="w-full h-full flex items-center justify-center text-gray-300 bg-gradient-to-br from-gray-50 to-gray-100">
                             <Code size={48} />
                           </div>
                         )}
@@ -758,12 +788,12 @@ const Works = ({ data, onWorkClick }) => {
 
                         <div className="flex flex-wrap gap-2 mt-auto">
                           {work.tags.slice(0, 5).map(tag => (
-                            <span key={tag} className="text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded border border-gray-100">
+                            <span key={tag} className="text-xs font-medium text-gray-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-200/50">
                               #{tag}
                             </span>
                           ))}
                           {work.tags.length > 5 && (
-                            <span className="text-xs font-bold text-gray-400 flex items-center px-1">
+                            <span className="text-xs font-bold gradient-text flex items-center px-1">
                               +{work.tags.length - 5}
                             </span>
                           )}
@@ -878,7 +908,7 @@ const WorkDetailModal = ({ work, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 md:p-6 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      className={`fixed inset-0 z-[300] flex items-center justify-center p-0 sm:p-4 md:p-6 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
     >
       <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onClick={onClose}></div>
 
@@ -899,7 +929,7 @@ const WorkDetailModal = ({ work, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 transition-colors ml-4"
+            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 transition-colors ml-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             <X size={24} />
           </button>
@@ -1019,13 +1049,13 @@ const WorkDetailModal = ({ work, onClose }) => {
                       <Lock size={18} /> Private Repo (NDA)
                     </button>
                   ) : (
-                    <a href={work.repoUrl} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-3.5 rounded-xl hover:bg-black transition-colors shadow-sm hover:shadow-lg">
+                    <a href={work.repoUrl} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-3.5 rounded-xl hover:bg-black transition-colors shadow-sm hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
                       <Github size={18} /> View on GitHub
                     </a>
                   )}
 
                   {work.siteUrl && (
-                    <a href={work.siteUrl} className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white font-bold py-3.5 rounded-xl hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg">
+                    <a href={work.siteUrl} className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white font-bold py-3.5 rounded-xl hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
                       <ArrowUpRight size={18} /> Visit Site
                     </a>
                   )}
@@ -1069,23 +1099,23 @@ const Dock = ({ activeView, setActiveView }) => {
   ];
 
   return (
-    <div className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-40 safe-area-pb w-full max-w-xs sm:max-w-md px-4">
-      <nav className="flex items-center justify-between px-4 py-3 bg-white/90 backdrop-blur-md border border-gray-200 shadow-2xl rounded-2xl ring-1 ring-black/5">
+    <div className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-[100] safe-area-pb w-full max-w-xs sm:max-w-md px-4">
+      <nav className="flex items-center justify-between px-5 py-3 glass-strong rounded-2xl shadow-xl">
         {items.map((item) => {
           const isActive = activeView === item.id;
           return (
             <button
               key={item.id}
               onClick={() => setActiveView(item.id)}
-              className={`flex flex-col items-center justify-center w-14 transition-all duration-300 ease-out group`}
+              className={`flex flex-col items-center justify-center w-16 transition-all duration-300 ease-out group focus-visible:outline-none`}
             >
-              <div className={`p-2 rounded-xl mb-1 transition-all duration-300 ${isActive
-                ? 'bg-blue-500 text-white shadow-md shadow-blue-500/30 -translate-y-1'
-                : 'text-gray-400 group-hover:bg-gray-100 group-hover:text-gray-900'
+              <div className={`p-2.5 rounded-xl mb-1 transition-all duration-300 ${isActive
+                ? 'bg-gradient-to-br from-blue-500 to-violet-500 text-white shadow-lg shadow-violet-500/30 -translate-y-1 scale-110'
+                : 'text-gray-400 group-hover:bg-gray-100/80 group-hover:text-gray-700 group-focus-visible:ring-2 group-focus-visible:ring-violet-500 group-focus-visible:ring-offset-2'
                 }`}>
                 <item.icon size={22} strokeWidth={isActive ? 2.5 : 2} />
               </div>
-              <span className={`text-[10px] font-bold tracking-wide transition-colors duration-300 ${isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
+              <span className={`text-[10px] font-bold tracking-wide transition-all duration-300 ${isActive ? 'gradient-text' : 'text-gray-400 group-hover:text-gray-600'
                 }`}>
                 {item.label}
               </span>
@@ -1107,8 +1137,9 @@ export default function App() {
   }, [activeView]);
 
   return (
-    <div className="font-sans bg-gray-50 text-gray-900 h-screen w-full overflow-hidden flex flex-col relative">
-      <div className="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:32px_32px]">
+    <div className="font-sans bg-[#FAFBFC] text-gray-900 h-screen w-full overflow-hidden flex flex-col relative">
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(rgba(139,92,246,0.15)_1px,transparent_1px)] [background-size:40px_40px]">
       </div>
 
       <main id="main-content" className="flex-1 overflow-y-auto relative z-10 pb-32 custom-scrollbar scroll-smooth">
