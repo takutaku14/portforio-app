@@ -56,8 +56,8 @@ const portfolioData = {
     {
       category: "AI / Backend",
       items: [
-        { name: "Python (FastAPI / Pandas)", level: 5, experience: "4年" },
-        { name: "Dify / RAG構築", level: 4, experience: "1年" },
+        { name: "Python", level: 5, experience: "4年" },
+        { name: "Dify", level: 4, experience: "1年" },
         { name: "Java", level: 5, experience: "4年" },
       ]
     },
@@ -66,7 +66,7 @@ const portfolioData = {
       items: [
         { name: "React / TypeScript", level: 4, experience: "2年" },
         { name: "Unity (C#)", level: 4, experience: "2年" },
-        { name: "Next.js", level: 3, experience: "2年" },
+        { name: "HTML / CSS / JS", level: 4, experience: "3年" },
       ]
     },
     {
@@ -84,56 +84,54 @@ const portfolioData = {
       category: "長期インターンシップ",
       title: "社内向け独自AIエージェント基盤「思考のパートナー」",
       thumbnail: `https://placehold.co/800x500/2563EB/FFFFFF?text=AI+Agent+Platform`,
-      description: "年間2,000万円のコスト課題を内製化で70%削減。RAGとSSOを搭載し、全社員が安全かつ直感的に使える全社共通AI基盤。",
-      tags: ["コスト削減", "RAG", "React", "Dify", "Azure OpenAI", "Entra ID", "UX Design"],
+      description: "年間2,000万円のコスト課題を内製化で70%削減。現場要望に即した検索機能と、Apple HIG準拠の直感的なUIを備えた全社共通AI基盤。",
+      tags: ["コスト削減", "RAG", "React", "Dify", "Perplexity", "Apple HIG", "UX Design"],
       role: "PM & Lead Engineer",
       isPrivate: true,
       repoUrl: "#",
       team: "3名",
       duration: "6ヶ月",
-      focusPoint: "高額な既製品導入を回避し「コスト70%削減」を実現した技術選定と、現場の声を反映した「直感的なUX」の両立。",
-      overview: "「AIを活用したいが、Enterprise版（年間約2,000万円）は高すぎて導入できない」という経営課題と、「既存ツールは使いにくく業務に活かせない」という現場課題を同時に解決するプロジェクト。PM兼リードエンジニアとして、要件定義からアーキテクチャ設計、実装までを主導。API従量課金とOSSを組み合わせた内製化によりコストを劇的に圧縮しつつ、社内ナレッジ検索（RAG）や直感的なUIを実装し、全社的な業務効率化を実現しました。",
+      focusPoint: "高コストなEnterprise版をリプレイスし「コスト70%削減」を達成。さらにモックアップ主導で「現場が本当に欲しい機能」を定義・実装した点。",
+      overview: "「ChatGPT Enterprise版（年間約2,000万円）のランニングコストが重荷になっている」という経営課題に対し、完全内製化によるリプレイスを提案・主導したプロジェクトです。PMとして、まずは「我々にとって理想のAIとは何か？」を可視化するUIモックアップを作成し、経営層・現場双方の合意を形成。技術選定から実装までをリードエンジニアとして牽引し、コストを70%圧縮しつつ、現場の要望（特定サイト検索など）を反映した「社員が本当に使いたくなる」基盤を構築しました。",
       siteUrl: null,
       screenshots: [
         {
           src: './images/ai (1).png',
-          label: 'Welcome Screen：ユーザーがまず初めに訪れる画面。時間帯で変わる挨拶と名前で親しみやすい印象に。'
+          label: 'ホーム画面：時間帯に合わせた挨拶と、次のアクションを直感的に促す「パートナー」としてのUI'
         },
         {
           src: './images/ai (2).png',
-          label: '検索モード：ユーザーが目的に合わせて選択'
+          label: '検索モード選択：現場の強い要望を受けて実装した「特定のサイト指定」検索や、「社内データ」などを柔軟に切り替え'
         },
         {
           src: './images/ai (3).png',
-          label: '提案型チャット画面：次のアクションをAIから提案する'
+          label: '対話画面：単に回答するだけでなく、ユーザーの意図を汲んで次のアクションを能動的に提案する「パートナー」としての振る舞い'
         },
         {
           src: './images/ai (4).png',
-          label: 'ウィザード：初回訪問時はウィザードで案内'
+          label: 'オンボーディング導入：初めてのユーザーでも迷わせない、教育コストを削減するウィザード形式'
         },
         {
           src: './images/ai (5).png',
-          label: 'AIスタイル：ユーザーは表現の好みを選択できる'
+          label: 'スタイル設定：「効率重視」か「思考パートナー」か。業務ニーズに合わせてAIの振る舞いをパーソナライズ'
         },
         {
           src: './images/ai (6).png',
-          label: 'Ready：頼れるパートナーとしての印象を与える'
-        },
-
+          label: 'セットアップ完了：わずか3ステップで設定が完了し、すぐに業務利用を開始できる状態へ'
+        }
       ],
       stack: {
         "Role": "PM & Lead Engineer",
         "Frontend": "React, Vite, CSS Modules",
         "Backend": "Dify (OSS基盤), Python",
         "AI / Search": "Azure OpenAI (GPT-4), Perplexity API",
-        "Auth": "Microsoft Entra ID (SSO認証)",
+        "Design": "Apple Human Interface Guidelines",
         "Key Tech": "RAG (Retrieval-Augmented Generation)"
       },
       points: [
-        "ROIを最大化する技術選定（Frugality）：安易な既製品導入ではなく、API従量課金とオープンソース基盤(Dify)を組み合わせた内製化を選択。機能要件を満たしつつ、年間約1,400万円（70%）のコスト削減見込みを立証し、プロジェクトを承認へ導きました。",
-        "現場視点での課題解決（Customer Obsession）：現場ヒアリングで判明した「特定サイトの調査が面倒」という声に対し、サーチ特化AI（Perplexity）によるドメイン指定検索機能を実装。さらに「出典元の明示」を行うことで、業務利用に耐えうる信頼性を担保しました。",
-        "組織課題へのアプローチ：社長の「バックオフィスの問い合わせ負荷を減らしたい」という意図を汲み、社内規定を回答できるRAG基盤を構築。人事・総務への質問対応をAIに代替させ、組織全体の生産性向上に貢献しました。",
-        "エンタープライズ水準のセキュリティ：全社員が利用するMicrosoftアカウントを用いたシングルサインオン(SSO)を実装。社内規定に準拠したセキュアな認証基盤を構築し、全社導入への障壁を取り除きました。"
+        "ROIを最大化する技術選定：高額なEnterprise版の継続利用ではなく、API従量課金とOSS基盤(Dify)を組み合わせた内製化へ移行。機能要件を維持したまま年間約1,400万円（70%）のコスト削減を実現し、ビジネスインパクト（利益）に直結させました。",
+        "現場の声に基づいた機能開発：営業部門へのアンケートで要望の多かった「特定サイトの情報（競合製品など）を調査したい」という強いニーズを発見。そこで、通常の検索だけでなく、Perplexity APIを活用した「ドメイン指定検索機能」を実装。現場の実業務に即した機能を提供し、利用率を向上させました。",
+        "「人間とAIの理想的な対話」を追求したデザイン（Apple HIG）：ユーザーが信頼して頼りたくなる「パートナー」としてのAIを目指し、長年HCI（人と計算機の対話）を追求してきたAppleのHuman Interface Guidelinesを採用。これを基に独自のルール（DESIGN_RULE.md）を制定することで、心地よい対話体験を実現すると同時に、チーム内でのデザイン意思決定コストを大幅に削減しました。"
       ]
     },
     {

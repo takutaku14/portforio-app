@@ -341,17 +341,74 @@
    Global Styles
    =================================== */
 
+/* Typography (DSIGN_BASE.md Section 4 準拠) */
 body {
-  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-size: var(--text-body);
+  /* 16px */
+  font-weight: 400;
+  line-height: 1.6;
+  /* Section 4.1: Body は 1.5-1.6 */
+  letter-spacing: 0;
+  /* Section 4.1: Body は 0 */
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  /* カーニングと合字を有効化 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   background: var(--bg-base);
   color: var(--text-main);
 }
 
+/* Heading Typography Enhancements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  /* Section 4.2: 見出しは狭く(1.1〜1.3) */
+  letter-spacing: -0.01em;
+  /* Section 4.1: 大きな文字は詰め */
+}
+
+/* Display Text (very large headings) */
+.text-display,
+.text-4xl,
+.text-5xl,
+.text-6xl {
+  font-weight: 900;
+  line-height: 1.1;
+  /* Section 4.1: Display line-height */
+  letter-spacing: -0.02em;
+  /* Section 4.1: Display tracking */
+}
+
+/* Small Text Enhancement */
+.text-sm,
+.text-xs {
+  letter-spacing: 0.02em;
+  /* Section 4.1: 小さな文字は広げる */
+}
+
+/* Text Selection */
 ::selection {
-  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
-  color: white;
+  background: rgba(139, 92, 246, 0.3);
+  /* 半透明のバイオレット背景 */
+  color: #1E293B;
+  /* 濃いグレーでコントラスト確保 */
+  -webkit-text-fill-color: #1E293B;
+  /* グラデーションテキスト対応 */
+}
+
+/* グラデーションテキスト選択時の可視性確保 */
+.gradient-text::selection {
+  background: rgba(139, 92, 246, 0.4);
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: #1E293B;
+  background-clip: initial;
 }
 
 /* Button Base with Gradient */
